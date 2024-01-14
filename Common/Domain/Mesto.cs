@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common
+namespace Common.Domain
 {
-    public class Class1
+    public class Mesto
     {
+        public int MestoId { get; set; }
+        public string NazivMesta { get; set; }
     }
 }
