@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common.Communication
 {
+    [Serializable]
     public class Request
     {
         public object Argument { get; set; }
