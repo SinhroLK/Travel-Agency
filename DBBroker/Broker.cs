@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DBBroker
 {
-    public class Class1
+    public class Broker
     {
+        private DbConnection connection;
+        public Broker()
+        {
+            connection = new DbConnection();
+        }
     }
 }
