@@ -23,6 +23,16 @@ namespace Server
 
         internal void HandleRequest()
         {
+            while (true)
+            {
+                Request req = (Request)receiver.Receive();
+                Response r = ProcessRequest(req);
+                sender.Send(r);
+            }
+        }
+
+        private Response ProcessRequest(Request req)
+        {
             throw new NotImplementedException();
         }
     }

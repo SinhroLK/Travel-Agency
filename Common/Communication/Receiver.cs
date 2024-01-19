@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -23,7 +25,15 @@ namespace Common.Communication
 
         public object Receive()
         {
-            return _formatter.Deserialize(_stream);
+            try
+            {
+                return _formatter.Deserialize(_stream);
+            }
+            catch (IOException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

@@ -35,9 +35,11 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(188, 127);
+            this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnStart.Location = new System.Drawing.Point(211, 159);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(100, 62);
+            this.btnStart.Size = new System.Drawing.Size(113, 77);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -45,9 +47,11 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(188, 224);
+            this.btnStop.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnStop.Location = new System.Drawing.Point(211, 280);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(100, 62);
+            this.btnStop.Size = new System.Drawing.Size(113, 77);
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -55,21 +59,26 @@
             // 
             // txtServer
             // 
-            this.txtServer.Location = new System.Drawing.Point(358, 197);
+            this.txtServer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtServer.Location = new System.Drawing.Point(403, 246);
+            this.txtServer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new System.Drawing.Size(181, 22);
+            this.txtServer.Size = new System.Drawing.Size(204, 26);
             this.txtServer.TabIndex = 2;
             // 
             // FrmServer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.ClientSize = new System.Drawing.Size(900, 563);
             this.Controls.Add(this.txtServer);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
+            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmServer";
-            this.Text = "Form1";
+            this.Text = "Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmServer_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

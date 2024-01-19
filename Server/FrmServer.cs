@@ -16,7 +16,10 @@ namespace Server
         public FrmServer()
         {
             InitializeComponent();
+            Color backgroundColor = Color.FromArgb(41, 44, 51);
+            this.BackColor = backgroundColor;
             txtServer.Enabled = false;
+            btnStop.Enabled = false;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
