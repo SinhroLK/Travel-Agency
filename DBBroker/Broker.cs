@@ -13,5 +13,20 @@ namespace DBBroker
         {
             connection = new DbConnection();
         }
+
+        public void Rollback()
+        {
+            connection.Rollback();
+        }
+
+        public void Commit()
+        {
+            connection.Commit();
+        }
+
+        public void BeginTransaction()
+        {
+            connection.BeginTransaction();
+        }
     }
 }
