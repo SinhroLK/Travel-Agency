@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common.Domain
 {
+    [Serializable]
     public class Termin
     {
         public int RedniBroj { get; set; }

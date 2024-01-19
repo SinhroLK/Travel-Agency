@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Common.Domain
 {
+    [Serializable]
     public class Aranzman
     {
         public int AranzmanId { get; set; }
         public string ImeAranzmana { get; set; }
         public double Cena { get; set; }
+        public string Opis { get; set; }
         public Mesto Mesto { get; set; }
     }
 }

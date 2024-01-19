@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common.Domain
 {
+    [Serializable]
     public class ProlaznoMesto
     {
         public Aranzman Aranzman { get; set; }

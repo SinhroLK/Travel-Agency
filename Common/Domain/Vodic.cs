@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common.Domain
 {
+    [Serializable]
     public class Vodic
     {
         public int VodicId { get; set; }
@@ -13,6 +14,7 @@ namespace Common.Domain
         public DateTime DatumRodjenja{ get; set; }
         public double Plata { get; set; }
         public string BrojTelefona { get; set; }
+        public DateTime DatumIstekaUgovora { get; set; }
 
     }
 }
