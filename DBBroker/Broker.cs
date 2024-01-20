@@ -44,12 +44,10 @@ namespace DBBroker
         public Admin Login(Admin user)
         {
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = $"select * from [dbo].[Admin] where korisnicko_ime = '{user.KorisnickoIme}' and lozinka = '{user.Lozinka}'";
+            command.CommandText = $"select * from Admin where korisnicko_ime = '{user.KorisnickoIme}' and lozinka = '{user.Lozinka}'";
             SqlDataReader reader = command.ExecuteReader();
-            //Console.WriteLine(reader.Read());
             try
             {
-                //Console.WriteLine(reader.Read());
                 if(reader.Read())
                 {
                     user.Prezime = (string)reader["prezime"];
