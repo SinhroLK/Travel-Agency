@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common.Communication;
+using Common.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +41,20 @@ namespace Client.GuiController
 
         public void Login(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Admin user = new Admin
+            {
+                KorisnickoIme = frmLogin.txtUsername.Text,
+                Lozinka = frmLogin.txtPassword.Text,
+            };
+            Response response = Communication.Instance.Login(user);
+            if (response.Exception == null)
+            {
+                MessageBox.Show("Uspesna prijava");
+            }
+            else
+            {
+                MessageBox.Show(">>>" + response.Exception.ToString());
+            }
         }
     }
 }

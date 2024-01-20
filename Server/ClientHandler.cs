@@ -1,6 +1,8 @@
 ﻿using Common.Communication;
+using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -33,7 +35,28 @@ namespace Server
 
         private Response ProcessRequest(Request req)
         {
-            throw new NotImplementedException();
+            Response r = new Response();
+            try
+            {
+                switch (req.Operation)
+                {
+                    case Operation.Login:
+                        r.Odgovor = Controller.Instance.Login((Admin)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                r.Exception = e;
+                Debug.WriteLine(e.Message);
+            }
+            return r;
         }
     }
 }
