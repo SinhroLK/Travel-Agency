@@ -11,7 +11,7 @@ namespace Server.SystemOperation
     public class LoginSO : SystemOperationBase
     {
         private readonly Admin user;
-        public Admin Result { get; set; }
+        public object Result { get; set; }
 
         public LoginSO(Admin user)
         {

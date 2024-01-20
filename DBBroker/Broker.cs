@@ -50,7 +50,7 @@ namespace DBBroker
             try
             {
                 //Console.WriteLine(reader.Read());
-                while (reader.Read())
+                if(reader.Read())
                 {
                     user.Prezime = (string)reader["prezime"];
                     user.Ime = (string)reader["ime"];
