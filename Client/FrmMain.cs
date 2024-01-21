@@ -1,5 +1,4 @@
-﻿using Client.GuiController;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,14 +10,11 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class FrmLogin : Form
+    public partial class FrmMain : Form
     {
-        public FrmLogin()
+        public FrmMain()
         {
             InitializeComponent();
-            Color backgroundColor = Color.FromArgb(46, 51, 73);
-            this.BackColor = backgroundColor;
-            btnLogin.Click += LoginGuiController.Instance.Login;
         }
     }
 }
