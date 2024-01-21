@@ -30,7 +30,6 @@ namespace Client
             btnTermin.Leave += MainCoordinator.Instance.TerminReset;
             btnVodic.Leave += MainCoordinator.Instance.VodicReset;
             btnLogout.Leave += MainCoordinator.Instance.LogoutReset;
-
         }
     }
 }

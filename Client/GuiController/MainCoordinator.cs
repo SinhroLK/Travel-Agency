@@ -32,12 +32,14 @@ namespace Client.GuiController
         internal void ShowFrmMain(string ime, string prezime)
         {
             frmMain = new FrmMain();
+
             frmMain.pnlMarker.Height = frmMain.btnPocetna.Height;
             frmMain.pnlMarker.Top = frmMain.btnPocetna.Top;
             frmMain.pnlMarker.Left = frmMain.btnPocetna.Left;
             frmMain.btnPocetna.BackColor = Color.FromArgb(46, 51, 73);
             frmMain.lblUsername.Text = ime + " " + prezime;
             frmMain.ShowDialog();
+            //frmMain.btnPocetna.PerformClick();  
         }
         #region navMenu
         internal void Aranzman(object sender, EventArgs e)
@@ -88,7 +90,7 @@ namespace Client.GuiController
             frmMain.btnLogout.BackColor = Color.FromArgb(46, 51, 73);
         }
         #endregion
-        #region reset
+        #region resetNavMenu
         internal void AranzmanReset(object sender, EventArgs e)
         {
             frmMain.btnAranzman.BackColor = Color.FromArgb(24, 30, 54);
