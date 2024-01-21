@@ -25,9 +25,10 @@ namespace Client.GuiController
 
         private MainCoordinator()
         {
-            
+            mestoGuiController = new MestoGuiController();
         }
         private FrmMain frmMain;
+        private MestoGuiController mestoGuiController;
 
         internal void ShowFrmMain(string ime, string prezime)
         {
@@ -121,5 +122,10 @@ namespace Client.GuiController
             frmMain.btnLogout.BackColor = Color.FromArgb(24, 30, 54);
         }
         #endregion
+        internal void DodajMesto(object sender, EventArgs e)
+        {
+            frmMain.ChangePanel(mestoGuiController.KreirajDodajMesto());
+        }
+        
     }
 }

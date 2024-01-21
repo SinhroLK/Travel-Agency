@@ -63,5 +63,36 @@ namespace DBBroker
             return null;
         }
 
+        public List<Mesto> VratiMesta()
+        {
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = "select * from Mesto";
+            List<Mesto> list = new List<Mesto>();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Mesto mesto = new Mesto()
+                {
+                    NazivMesta = (string)reader["naziv"],
+                    Valuta = (string)reader["valuta"],
+                    BrojStanovnika = (int)reader["broj_stanovnika"]     
+                };
+                list.Add(mesto);
+            }
+            reader.Close();
+            return list;
+        }
+
+        public object KreirajMesto(Mesto m)
+        {
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = $"insert into {m.TableName} values({m.Values})";
+            if(command.ExecuteNonQuery() > 0)
+            {
+                return m;
+            }
+            command.Dispose();
+            return null;
+        }
     }
 }

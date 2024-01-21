@@ -47,6 +47,16 @@ namespace Server
                             throw new Exception();
                         }
                         break;
+                    case Operation.VratiGradove:
+                        r.Odgovor = Controller.Instance.VratiMesta();
+                        break;
+                    case Operation.KreirajMesto:
+                        r.Odgovor = Controller.Instance.KreirajMesto((Mesto)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
                     default:
                         break;
                 }

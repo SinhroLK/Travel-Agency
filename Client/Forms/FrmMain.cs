@@ -23,6 +23,7 @@ namespace Client
             btnTermin.Click += MainCoordinator.Instance.Termin;
             btnVodic.Click += MainCoordinator.Instance.Vodic;
             btnLogout.Click += MainCoordinator.Instance.Logout;
+
             // on leave
             btnAranzman.Leave += MainCoordinator.Instance.AranzmanReset;
             btnMesto.Leave += MainCoordinator.Instance.MestoReset;
@@ -30,6 +31,18 @@ namespace Client
             btnTermin.Leave += MainCoordinator.Instance.TerminReset;
             btnVodic.Leave += MainCoordinator.Instance.VodicReset;
             btnLogout.Leave += MainCoordinator.Instance.LogoutReset;
+
+            //SK
+            btnMesto.Click += MainCoordinator.Instance.DodajMesto;
+        }
+
+        internal void ChangePanel(Control control)
+        {
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(control);
+            control.Dock = DockStyle.Fill;
+            pnlMain.AutoSize = true;
+            pnlMain.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
     }
 }

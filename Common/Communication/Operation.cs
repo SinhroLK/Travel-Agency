@@ -8,6 +8,8 @@ namespace Common.Communication
 {
     public enum Operation
     {
-        Login
+        Login,
+        VratiGradove,
+        KreirajMesto
     }
 }

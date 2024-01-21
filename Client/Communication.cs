@@ -47,5 +47,29 @@ namespace Client
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal object VratiMesta()
+        {
+            Request request = new Request
+            {
+                Operation = Operation.VratiGradove
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            Console.WriteLine(response.Odgovor);
+            return response.Odgovor;
+        }
+
+        internal Response KreirajMesto(Mesto mesto)
+        {
+            Request request = new Request
+            {
+                Argument = mesto,
+                Operation = Operation.KreirajMesto
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }

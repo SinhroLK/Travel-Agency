@@ -30,5 +30,25 @@ namespace Server
             so.ExecuteTemplate();
             return so.Result;
         }
+
+        internal List<Mesto> VratiMesta()
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.VratiMesta();
+            }
+            finally
+            {
+                broker.CloseConnection();
+            }
+        }
+
+        internal object KreirajMesto(Mesto argument)
+        {
+            DodajMestoSO dodajMesto = new DodajMestoSO(argument);
+            dodajMesto.ExecuteTemplate();
+            return dodajMesto.Result;
+        }
     }
 }
