@@ -50,10 +50,13 @@ namespace Client.GuiController
             if (response.Exception == null)
             {
                 MessageBox.Show("Uspesna prijava");
+                frmLogin.Visible = false;
+                Admin a = (Admin)response.Odgovor;
+                MainCoordinator.Instance.ShowFrmMain(a.Ime, a.Prezime);
             }
             else
             {
-                MessageBox.Show(">>>" + response.Exception.ToString());
+                MessageBox.Show("Netačno korisničko ime ili lozinka. Pokušajte ponovo");
             }
         }
     }

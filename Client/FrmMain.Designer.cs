@@ -29,56 +29,45 @@
         private void InitializeComponent()
         {
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pnlMarker = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnTermin = new System.Windows.Forms.Button();
             this.btnAranzman = new System.Windows.Forms.Button();
             this.btnVodic = new System.Windows.Forms.Button();
             this.btnMesto = new System.Windows.Forms.Button();
             this.btnPocetna = new System.Windows.Forms.Button();
+            this.pnlUser = new System.Windows.Forms.Panel();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.pnlMenu.Controls.Add(this.pnlMarker);
             this.pnlMenu.Controls.Add(this.btnLogout);
             this.pnlMenu.Controls.Add(this.btnTermin);
             this.pnlMenu.Controls.Add(this.btnAranzman);
             this.pnlMenu.Controls.Add(this.btnVodic);
             this.pnlMenu.Controls.Add(this.btnMesto);
             this.pnlMenu.Controls.Add(this.btnPocetna);
-            this.pnlMenu.Controls.Add(this.panel1);
+            this.pnlMenu.Controls.Add(this.pnlUser);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(186, 550);
+            this.pnlMenu.Size = new System.Drawing.Size(186, 553);
             this.pnlMenu.TabIndex = 0;
             // 
-            // panel1
+            // pnlMarker
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 124);
-            this.panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label1.Location = new System.Drawing.Point(36, 88);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Username";
+            this.pnlMarker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.pnlMarker.Location = new System.Drawing.Point(0, 193);
+            this.pnlMarker.Name = "pnlMarker";
+            this.pnlMarker.Size = new System.Drawing.Size(3, 100);
+            this.pnlMarker.TabIndex = 3;
             // 
             // btnLogout
             // 
@@ -176,6 +165,27 @@
             this.btnPocetna.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPocetna.UseVisualStyleBackColor = true;
             // 
+            // pnlUser
+            // 
+            this.pnlUser.Controls.Add(this.lblUsername);
+            this.pnlUser.Controls.Add(this.pictureBox1);
+            this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlUser.Location = new System.Drawing.Point(0, 0);
+            this.pnlUser.Name = "pnlUser";
+            this.pnlUser.Size = new System.Drawing.Size(186, 124);
+            this.pnlUser.TabIndex = 0;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.lblUsername.Location = new System.Drawing.Point(36, 88);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(108, 23);
+            this.lblUsername.TabIndex = 1;
+            this.lblUsername.Text = "Username";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Client.Properties.Resources.Untitled_11;
@@ -190,15 +200,15 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(933, 550);
+            this.ClientSize = new System.Drawing.Size(933, 553);
             this.Controls.Add(this.pnlMenu);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.Text = "Turisticka Agencija";
             this.pnlMenu.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlUser.ResumeLayout(false);
+            this.pnlUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -207,14 +217,15 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlUser;
+        public System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnPocetna;
-        private System.Windows.Forms.Button btnMesto;
-        private System.Windows.Forms.Button btnTermin;
-        private System.Windows.Forms.Button btnAranzman;
-        private System.Windows.Forms.Button btnVodic;
-        private System.Windows.Forms.Button btnLogout;
+        public System.Windows.Forms.Button btnPocetna;
+        public System.Windows.Forms.Button btnMesto;
+        public System.Windows.Forms.Button btnTermin;
+        public System.Windows.Forms.Button btnAranzman;
+        public System.Windows.Forms.Button btnVodic;
+        public System.Windows.Forms.Button btnLogout;
+        public System.Windows.Forms.Panel pnlMarker;
     }
 }
