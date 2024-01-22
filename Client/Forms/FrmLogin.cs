@@ -19,6 +19,14 @@ namespace Client
             Color backgroundColor = Color.FromArgb(46, 51, 73);
             this.BackColor = backgroundColor;
             btnLogin.Click += LoginGuiController.Instance.Login;
+            #region window manipulation
+            btnExit.Click += LoginGuiController.Instance.UgasiFormu;
+            btnMaximize.Click += LoginGuiController.Instance.Maximize;
+            btnMinimize.Click += LoginGuiController.Instance.Minimize;
+            pnlWindowControl.MouseDown += LoginGuiController.Instance.KursorKlik;
+            pnlWindowControl.MouseMove += LoginGuiController.Instance.KursorKretanje;
+            pnlWindowControl.MouseUp += LoginGuiController.Instance.KursorKraj;
+            #endregion
         }
     }
 }

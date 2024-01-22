@@ -4,12 +4,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Client.GuiController
 {
     public class MainCoordinator
     {
+        private bool isDragging;
+        private Point lastCursorPos;
+        private Point lastFormPos;
         private static MainCoordinator instance;
         public static MainCoordinator Instance
         {
@@ -122,10 +126,55 @@ namespace Client.GuiController
             frmMain.btnLogout.BackColor = Color.FromArgb(24, 30, 54);
         }
         #endregion
+        #region windows manipulation
+        internal void UgasiFormu(object sender, EventArgs e)
+        {
+            frmMain.Close();
+        }
+
+        internal void Maximize(object sender, EventArgs e)
+        {
+            if (frmMain.WindowState == System.Windows.Forms.FormWindowState.Maximized)
+            {
+                frmMain.WindowState = System.Windows.Forms.FormWindowState.Normal;
+            }
+            else
+            {
+                frmMain.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            }
+            
+        }
+
+        internal void Minimize(object sender, EventArgs e)
+        {
+            frmMain.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+        }
+        internal void KursorKraj(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
+        }
+
+        internal void KursorKretanje(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                int deltaX = Cursor.Position.X - lastCursorPos.X;
+                int deltaY = Cursor.Position.Y - lastCursorPos.Y;
+
+                frmMain.Location = new Point(lastFormPos.X + deltaX, lastFormPos.Y + deltaY);
+            }
+        }
+
+        internal void KursorKlik(object sender, MouseEventArgs e)
+        {
+            isDragging = true;
+            lastCursorPos = Cursor.Position;
+            lastFormPos = frmMain.Location;
+        }
+        #endregion
         internal void DodajMesto(object sender, EventArgs e)
         {
             frmMain.ChangePanel(mestoGuiController.KreirajDodajMesto());
         }
-        
     }
 }
