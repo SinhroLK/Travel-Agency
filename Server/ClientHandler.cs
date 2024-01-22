@@ -48,10 +48,20 @@ namespace Server
                         }
                         break;
                     case Operation.VratiGradove:
-                        r.Odgovor = Controller.Instance.VratiMesta();
+                        r.Odgovor = Controller.Instance.VratiMesta((Mesto)req.Argument);
                         break;
                     case Operation.KreirajMesto:
                         r.Odgovor = Controller.Instance.KreirajMesto((Mesto)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
+                    case Operation.VratiVodice:
+                        r.Odgovor = Controller.Instance.VratiVodice((Vodic)req.Argument);
+                        break;
+                    case Operation.KreirajVodica:
+                        r.Odgovor = Controller.Instance.KreirajVodica((Vodic)req.Argument);
                         if (r.Odgovor == null)
                         {
                             throw new Exception();

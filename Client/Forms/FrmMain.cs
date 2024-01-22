@@ -42,6 +42,7 @@ namespace Client
             #endregion
             //SK
             btnMesto.Click += MainCoordinator.Instance.DodajMesto;
+            btnVodic.Click += MainCoordinator.Instance.DodajVodica;
         }
 
         internal void ChangePanel(Control control)

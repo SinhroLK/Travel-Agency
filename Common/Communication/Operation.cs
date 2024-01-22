@@ -10,6 +10,8 @@ namespace Common.Communication
     {
         Login,
         VratiGradove,
-        KreirajMesto
+        KreirajMesto,
+        VratiVodice,
+        KreirajVodica
     }
 }

@@ -11,27 +11,27 @@ using System.Windows.Forms;
 
 namespace Client.UserControls
 {
-    public partial class UCDodajMesto : UserControl
+    public partial class UCVodic : UserControl
     {
-        public UCDodajMesto()
+        public UCVodic()
         {
             InitializeComponent();
             Timer timer = new Timer();
             timer.Interval = 500;
-            
+
             timer.Tick += AzurirajTabelu;
             timer.Start();
         }
 
         private void AzurirajTabelu(object sender, EventArgs e)
         {
-            Mesto mesto = new Mesto();
-            List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
-            BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
-            dgvMesta.DataSource = mesta;
-            dgvMesta.Columns["MestoId"].Visible = false;
-            dgvMesta.Columns["TableName"].Visible = false;
-            dgvMesta.Columns["Values"].Visible = false;
+            Vodic vodic= new Vodic();
+            List<Vodic> listaVodica = (List<Vodic>)Communication.Instance.VratiVodice(vodic);
+            BindingList<Vodic> mesta = new BindingList<Vodic>(listaVodica);
+            dgvVodici.DataSource = mesta;
+            dgvVodici.Columns["VodicId"].Visible = false;
+            dgvVodici.Columns["TableName"].Visible = false;
+            dgvVodici.Columns["Values"].Visible = false;
         }
     }
 }

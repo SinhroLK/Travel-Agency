@@ -30,10 +30,11 @@ namespace Client.GuiController
         private MainCoordinator()
         {
             mestoGuiController = new MestoGuiController();
+            vodicGuiController = new VodicGuiController();
         }
         private FrmMain frmMain;
         private MestoGuiController mestoGuiController;
-
+        private VodicGuiController vodicGuiController;
         internal void ShowFrmMain(string ime, string prezime)
         {
             frmMain = new FrmMain();
@@ -175,6 +176,11 @@ namespace Client.GuiController
         internal void DodajMesto(object sender, EventArgs e)
         {
             frmMain.ChangePanel(mestoGuiController.KreirajDodajMesto());
+        }
+
+        internal void DodajVodica(object sender, EventArgs e)
+        {
+            frmMain.ChangePanel(vodicGuiController.KreirajDodajVodica());
         }
     }
 }

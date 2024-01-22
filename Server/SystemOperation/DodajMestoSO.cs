@@ -19,7 +19,7 @@ namespace Server.SystemOperation
         }
         protected override void ExecuteConcreteOperation()
         {
-            Result = broker.KreirajMesto(m);
+            Result = broker.Kreiraj(m);
         }
     }
 }

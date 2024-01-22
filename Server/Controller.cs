@@ -30,13 +30,46 @@ namespace Server
             so.ExecuteTemplate();
             return so.Result;
         }
-
-        internal List<Mesto> VratiMesta()
+        internal List<Mesto> VratiMesta(Mesto mesto)
         {
             try
             {
                 broker.OpenConnection();
-                return broker.VratiMesta();
+                return broker.VratiListu(mesto).Select(x => new Mesto() 
+                { 
+                    MestoId = ((Mesto)x).MestoId,
+                    NazivMesta = ((Mesto)x).NazivMesta,
+                    Valuta = ((Mesto)x).Valuta,
+                    BrojStanovnika = ((Mesto)x).BrojStanovnika
+
+                }).ToList();
+            }
+            finally
+            {
+                broker.CloseConnection();
+            }
+        }
+        internal object KreirajMesto(Mesto argument)
+        {
+            DodajMestoSO dodajMesto = new DodajMestoSO(argument);
+            dodajMesto.ExecuteTemplate();
+            return dodajMesto.Result;
+        }
+
+        internal object VratiVodice(Vodic vodic)
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.VratiListu(vodic).Select(x => new Vodic()
+                {
+                    VodicId = ((Vodic)x).VodicId,
+                    Ime = ((Vodic)x).Ime,
+                    Plata = ((Vodic)x).Plata,
+                    BrojTelefona = ((Vodic)x).BrojTelefona,
+                    DatumRodjenja = ((Vodic)x).DatumRodjenja,
+                    DatumIstekaUgovora = ((Vodic)x).DatumIstekaUgovora
+                }).ToList();
             }
             finally
             {
@@ -44,11 +77,11 @@ namespace Server
             }
         }
 
-        internal object KreirajMesto(Mesto argument)
+        internal object KreirajVodica(Vodic argument)
         {
-            DodajMestoSO dodajMesto = new DodajMestoSO(argument);
-            dodajMesto.ExecuteTemplate();
-            return dodajMesto.Result;
+            DodajVodicaSO dodajVodica = new DodajVodicaSO(argument);
+            dodajVodica.ExecuteTemplate();
+            return dodajVodica.Result;
         }
     }
 }

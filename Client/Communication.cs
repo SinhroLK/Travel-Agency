@@ -48,10 +48,11 @@ namespace Client
             return response;
         }
 
-        internal object VratiMesta()
+        internal object VratiMesta(Mesto mesto)
         {
             Request request = new Request
             {
+                Argument = mesto,
                 Operation = Operation.VratiGradove
             };
             sender.Send(request);
@@ -66,6 +67,31 @@ namespace Client
             {
                 Argument = mesto,
                 Operation = Operation.KreirajMesto
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal object VratiVodice(Vodic vodic)
+        {
+            Request request = new Request
+            {
+                Argument = vodic,
+                Operation = Operation.VratiVodice
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            Console.WriteLine(response.Odgovor);
+            return response.Odgovor;
+        }
+
+        internal Response KreirajVodica(Vodic vodic)
+        {
+            Request request = new Request
+            {
+                Argument = vodic,
+                Operation = Operation.KreirajVodica
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();

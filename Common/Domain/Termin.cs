@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,5 +18,10 @@ namespace Common.Domain
 
         public string TableName => "Termin";
         public string Values => $"'{Aranzman.AranzmanId}', '{Vodic.VodicId}', '{DatumOd.ToString("yyyyMMdd")}', '{DatumDo.ToString("yyyyMMdd")}'";
+
+        public List<IEntity> VratiReaderListu(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

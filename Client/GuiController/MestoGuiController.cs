@@ -24,20 +24,27 @@ namespace Client.GuiController
 
         private void DodajMesto(object sender, EventArgs e)
         {
-            Mesto mesto = new Mesto
+            if(dodajMesto.txtNazivMesta.Text == "" || dodajMesto.txtValuta.Text == "" || dodajMesto.txtBrojStanovnika.Text == "||")
             {
-                NazivMesta = dodajMesto.txtNazivMesta.Text,
-                Valuta = dodajMesto.txtValuta.Text,
-                BrojStanovnika = int.Parse(dodajMesto.txtBrojStanovnika.Text)
-            };
-            Response response = Communication.Instance.KreirajMesto(mesto);
-            if (response.Exception == null)
-            {
-                MessageBox.Show("Uspesno ste dodali mesto!");
+                Mesto mesto = new Mesto
+                {
+                    NazivMesta = dodajMesto.txtNazivMesta.Text,
+                    Valuta = dodajMesto.txtValuta.Text,
+                    BrojStanovnika = int.Parse(dodajMesto.txtBrojStanovnika.Text)
+                };
+                Response response = Communication.Instance.KreirajMesto(mesto);
+                if (response.Exception == null)
+                {
+                    MessageBox.Show("Uspesno ste dodali mesto!");
+                }
+                else
+                {
+                    Debug.WriteLine(response.Exception);
+                }
             }
             else
             {
-                Debug.WriteLine(response.Exception);
+                MessageBox.Show("Molimo vas da popunite sva polja");
             }
         }
     }

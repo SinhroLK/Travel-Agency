@@ -63,33 +63,24 @@ namespace DBBroker
             return null;
         }
 
-        public List<Mesto> VratiMesta()
+        public List<IEntity> VratiListu(IEntity objekat)
         {
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = "select * from Mesto";
-            List<Mesto> list = new List<Mesto>();
+            command.CommandText = $"select * from {objekat.TableName}";
+            List<IEntity> list = new List<IEntity>();
             SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                Mesto mesto = new Mesto()
-                {
-                    NazivMesta = (string)reader["naziv"],
-                    Valuta = (string)reader["valuta"],
-                    BrojStanovnika = (int)reader["broj_stanovnika"]     
-                };
-                list.Add(mesto);
-            }
+            list = objekat.VratiReaderListu(reader); 
             reader.Close();
             return list;
         }
 
-        public object KreirajMesto(Mesto m)
+        public object Kreiraj(IEntity entity)
         {
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = $"insert into {m.TableName} values({m.Values})";
+            command.CommandText = $"insert into {entity.TableName} values({entity.Values})";
             if(command.ExecuteNonQuery() > 0)
             {
-                return m;
+                return entity;
             }
             command.Dispose();
             return null;
