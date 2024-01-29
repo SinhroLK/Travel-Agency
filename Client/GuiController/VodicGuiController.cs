@@ -3,6 +3,7 @@ using Common.Communication;
 using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -18,25 +19,45 @@ namespace Client.GuiController
         {
             dodajVodica = new UCVodic();
             dodajVodica.btnDodajVodica.Click += DodajVodica;
-            //dodajVodica.txtPretraga.TextChanged += Pretraga;
+            dodajVodica.txtPretraga.TextChanged += Pretraga;
             return dodajVodica;
         }
 
-        //private void Pretraga(object sender, EventArgs e)
-        //{
-        //    if (dodajVodica.txtPretraga.Text == "")
-        //    {
-        //        dodajVodica.InitializeTimer();
-        //    }
-        //    else
-        //    {
-        //        dodajVodica.FilterData(dodajVodica.txtPretraga.Text);
-        //    }
-        //}
+        private void Pretraga(object sender, EventArgs e)
+        {
+            string filter = dodajVodica.txtPretraga.Text;
+            BindingList<Vodic> temp = dodajVodica.vodici;
+            if (string.IsNullOrEmpty(filter))
+            {
+                dodajVodica.filterVodici = dodajVodica.vodici;
+            }
+            else
+            {
+                List<Vodic> tempVodic = new List<Vodic>();
+                foreach (Vodic vodic in temp)
+                {
+                    if (vodic.Ime.ToLower().Contains(filter.ToLower()))
+                    {
+                        tempVodic.Add(vodic);
+                    }
+                    dodajVodica.filterVodici = new BindingList<Vodic>(tempVodic);
+                }
+            }
+            RefreshDataGridView();
+        }
+
+        private void RefreshDataGridView()
+        {
+            dodajVodica.dgvVodici.DataSource = dodajVodica.filterVodici;
+            dodajVodica.dgvVodici.Columns["TableName"].Visible = false;
+            dodajVodica.dgvVodici.Columns["VodicId"].Visible = false;
+            dodajVodica.dgvVodici.Columns["Values"].Visible = false;
+        }
 
         private void DodajVodica(object sender, EventArgs e)
         {
-            bool provera = dodajVodica.txtImePrezime.Text == "" || dodajVodica.txtPlata.Text == "" || dodajVodica.txtBrojTelefona.Text == "" || dodajVodica.mcDatumRodjenja.SelectionStart.Year - DateTime.Now.Year < 18 || dodajVodica.mcDatumIsteka.SelectionStart != DateTime.Now;
+            bool rodjenje_provera = DateTime.Now.Year - dodajVodica.mcDatumRodjenja.SelectionStart.Year > 18;
+            bool provera = dodajVodica.txtImePrezime.Text != "" && dodajVodica.txtPlata.Text != "" && dodajVodica.txtBrojTelefona.Text != "" && rodjenje_provera && dodajVodica.mcDatumIsteka.SelectionStart.Date != DateTime.Now.Date;
             if (provera)
             {
                 Vodic vodic = new Vodic

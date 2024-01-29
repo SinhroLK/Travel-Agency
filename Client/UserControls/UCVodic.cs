@@ -14,8 +14,8 @@ namespace Client.UserControls
     public partial class UCVodic : UserControl
     {
         Timer timer = new Timer();
-        BindingList<Vodic> vodici;
-        BindingList<Vodic> filterVodici;
+        public BindingList<Vodic> vodici;
+        public BindingList<Vodic> filterVodici;
         public UCVodic()
         {
             InitializeComponent();
@@ -48,38 +48,37 @@ namespace Client.UserControls
                 dgvVodici.Columns["TableName"].Visible = false;
                 dgvVodici.Columns["VodicId"].Visible = false;
                 dgvVodici.Columns["Values"].Visible = false;
-            }
-            
+            } 
         }
+        //private void txtPretraga_TextChanged(object sender, EventArgs e)
+        //{
+        //    string filter = txtPretraga.Text;
+        //    BindingList<Vodic> temp = vodici;
+        //    if (string.IsNullOrEmpty(filter))
+        //    {
+        //        filterVodici = vodici;
+        //    }
+        //    else
+        //    {
+        //        List<Vodic> tempVodic = new List<Vodic>();
+        //        foreach (Vodic vodic in temp)
+        //        {
+        //            if (vodic.Ime.ToLower().Contains(filter.ToLower()))
+        //            {
+        //                tempVodic.Add(vodic);
+        //            }
+        //            filterVodici = new BindingList<Vodic>(tempVodic);
+        //        }
+        //    }
+        //    RefreshDataGridView();
+        //}
 
-        private void txtPretraga_TextChanged(object sender, EventArgs e)
-        {
-            string filter = txtPretraga.Text;
-            BindingList<Vodic> temp = vodici;
-            if (string.IsNullOrEmpty(filter))
-            {
-                filterVodici = vodici;
-            }
-            else
-            {
-                List<Vodic> tempVodic = new List<Vodic>();
-                foreach (Vodic vodic in temp)
-                {
-                    if (vodic.Ime.ToLower().Contains(filter.ToLower()))
-                    {
-                        tempVodic.Add(vodic);
-                    }
-                    filterVodici = new BindingList<Vodic>(tempVodic);
-                }
-            }
-            RefreshDataGridView();
-        }
-        private void RefreshDataGridView()
-        {
-            dgvVodici.DataSource = filterVodici;
-            dgvVodici.Columns["TableName"].Visible = false;
-            dgvVodici.Columns["VodicId"].Visible = false;
-            dgvVodici.Columns["Values"].Visible = false;
-        }
+        //private void RefreshDataGridView()
+        //{
+        //    dgvVodici.DataSource = filterVodici;
+        //    dgvVodici.Columns["TableName"].Visible = false;
+        //    dgvVodici.Columns["VodicId"].Visible = false;
+        //    dgvVodici.Columns["Values"].Visible = false;
+        //}
     }
 }

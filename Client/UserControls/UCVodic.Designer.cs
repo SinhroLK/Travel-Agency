@@ -165,7 +165,6 @@
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(100, 23);
             this.txtPretraga.TabIndex = 13;
-            this.txtPretraga.TextChanged += new System.EventHandler(this.txtPretraga_TextChanged);
             // 
             // lblPretraga
             // 
