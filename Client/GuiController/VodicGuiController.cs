@@ -18,8 +18,21 @@ namespace Client.GuiController
         {
             dodajVodica = new UCVodic();
             dodajVodica.btnDodajVodica.Click += DodajVodica;
+            //dodajVodica.txtPretraga.TextChanged += Pretraga;
             return dodajVodica;
         }
+
+        //private void Pretraga(object sender, EventArgs e)
+        //{
+        //    if (dodajVodica.txtPretraga.Text == "")
+        //    {
+        //        dodajVodica.InitializeTimer();
+        //    }
+        //    else
+        //    {
+        //        dodajVodica.FilterData(dodajVodica.txtPretraga.Text);
+        //    }
+        //}
 
         private void DodajVodica(object sender, EventArgs e)
         {

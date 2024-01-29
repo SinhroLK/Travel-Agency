@@ -39,17 +39,19 @@ namespace Client.GuiController
         {
             frmMain = new FrmMain();
 
-            frmMain.pnlMarker.Height = frmMain.btnPocetna.Height;
-            frmMain.pnlMarker.Top = frmMain.btnPocetna.Top;
-            frmMain.pnlMarker.Left = frmMain.btnPocetna.Left;
-            frmMain.btnPocetna.BackColor = Color.FromArgb(46, 51, 73);
+            //frmMain.pnlMarker.Height = frmMain.btnPocetna.Height;
+            //frmMain.pnlMarker.Top = frmMain.btnPocetna.Top;
+            //frmMain.pnlMarker.Left = frmMain.btnPocetna.Left;
+            //frmMain.btnPocetna.BackColor = Color.FromArgb(46, 51, 73);
+            frmMain.pnlMarker.Visible = false;
             frmMain.lblUsername.Text = ime + " " + prezime;
             frmMain.ShowDialog();
-            //frmMain.btnPocetna.PerformClick();  
+            //frmMain.btnMesto.PerformClick();  
         }
         #region navMenu
         internal void Aranzman(object sender, EventArgs e)
         {
+            frmMain.pnlMarker.Visible = true;
             frmMain.pnlMarker.Height = frmMain.btnAranzman.Height;
             frmMain.pnlMarker.Top = frmMain.btnAranzman.Top;
             frmMain.pnlMarker.Left = frmMain.btnAranzman.Left;
@@ -58,6 +60,7 @@ namespace Client.GuiController
 
         internal void Vodic(object sender, EventArgs e)
         {
+            frmMain.pnlMarker.Visible = true;
             frmMain.pnlMarker.Height = frmMain.btnVodic.Height;
             frmMain.pnlMarker.Top = frmMain.btnVodic.Top;
             frmMain.pnlMarker.Left = frmMain.btnVodic.Left;
@@ -66,6 +69,7 @@ namespace Client.GuiController
 
         internal void Termin(object sender, EventArgs e)
         {
+            frmMain.pnlMarker.Visible = true;
             frmMain.pnlMarker.Height = frmMain.btnTermin.Height;
             frmMain.pnlMarker.Top = frmMain.btnTermin.Top;
             frmMain.pnlMarker.Left = frmMain.btnTermin.Left;
@@ -74,6 +78,7 @@ namespace Client.GuiController
 
         internal void Pocetna(object sender, EventArgs e)
         {
+            frmMain.pnlMarker.Visible = true;
             frmMain.pnlMarker.Height = frmMain.btnPocetna.Height;
             frmMain.pnlMarker.Top = frmMain.btnPocetna.Top;
             frmMain.pnlMarker.Left = frmMain.btnPocetna.Left;
@@ -82,6 +87,7 @@ namespace Client.GuiController
 
         internal void Mesto(object sender, EventArgs e)
         {
+            frmMain.pnlMarker.Visible = true;
             frmMain.pnlMarker.Height = frmMain.btnMesto.Height;
             frmMain.pnlMarker.Top = frmMain.btnMesto.Top;
             frmMain.pnlMarker.Left = frmMain.btnMesto.Left;
@@ -90,6 +96,7 @@ namespace Client.GuiController
 
         internal void Logout(object sender, EventArgs e)
         {
+            frmMain.pnlMarker.Visible = true;
             frmMain.pnlMarker.Height = frmMain.btnLogout.Height;
             frmMain.pnlMarker.Top = frmMain.btnLogout.Top;
             frmMain.pnlMarker.Left = frmMain.btnLogout.Left;
@@ -127,7 +134,7 @@ namespace Client.GuiController
             frmMain.btnLogout.BackColor = Color.FromArgb(24, 30, 54);
         }
         #endregion
-        #region windows manipulation
+        #region window manipulation
         internal void UgasiFormu(object sender, EventArgs e)
         {
             frmMain.Close();

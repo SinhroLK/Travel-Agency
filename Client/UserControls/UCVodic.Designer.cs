@@ -41,6 +41,8 @@
             this.lblDatumIstekaUgovora = new System.Windows.Forms.Label();
             this.btnDodajVodica = new System.Windows.Forms.Button();
             this.btnObrisiVodica = new System.Windows.Forms.Button();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.lblPretraga = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVodici)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             this.dgvVodici.Name = "dgvVodici";
             this.dgvVodici.RowHeadersWidth = 51;
             this.dgvVodici.RowTemplate.Height = 24;
-            this.dgvVodici.Size = new System.Drawing.Size(586, 159);
+            this.dgvVodici.Size = new System.Drawing.Size(566, 159);
             this.dgvVodici.TabIndex = 0;
             // 
             // lblIme
@@ -157,11 +159,31 @@
             this.btnObrisiVodica.Text = "Obriši vodiča";
             this.btnObrisiVodica.UseVisualStyleBackColor = true;
             // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(145, 280);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(100, 23);
+            this.txtPretraga.TabIndex = 13;
+            this.txtPretraga.TextChanged += new System.EventHandler(this.txtPretraga_TextChanged);
+            // 
+            // lblPretraga
+            // 
+            this.lblPretraga.AutoSize = true;
+            this.lblPretraga.ForeColor = System.Drawing.Color.White;
+            this.lblPretraga.Location = new System.Drawing.Point(25, 286);
+            this.lblPretraga.Name = "lblPretraga";
+            this.lblPretraga.Size = new System.Drawing.Size(114, 17);
+            this.lblPretraga.TabIndex = 14;
+            this.lblPretraga.Text = "Pretraga vodiča";
+            // 
             // UCVodic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.Controls.Add(this.lblPretraga);
+            this.Controls.Add(this.txtPretraga);
             this.Controls.Add(this.btnObrisiVodica);
             this.Controls.Add(this.btnDodajVodica);
             this.Controls.Add(this.lblDatumIstekaUgovora);
@@ -199,5 +221,7 @@
         public System.Windows.Forms.Label lblDatumIstekaUgovora;
         public System.Windows.Forms.Button btnDodajVodica;
         public System.Windows.Forms.Button btnObrisiVodica;
+        public System.Windows.Forms.TextBox txtPretraga;
+        public System.Windows.Forms.Label lblPretraga;
     }
 }

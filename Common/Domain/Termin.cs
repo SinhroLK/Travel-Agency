@@ -21,7 +21,23 @@ namespace Common.Domain
 
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            List<IEntity> lista = new List<IEntity>();
+            while (reader.Read())
+            {
+                Aranzman ar = new Aranzman();
+                Vodic vo = new Vodic();
+                Termin termin = new Termin();
+                termin.RedniBroj = (int)reader["termin_id"];
+                ar.AranzmanId = (int)reader["aranzman_id"];
+                vo.VodicId = (int)reader["vodic_id"];
+                termin.Aranzman = ar;
+                termin.Vodic = vo;
+                termin.DatumOd = (DateTime)reader["datum_od"];
+                termin.DatumDo = (DateTime)reader["datum_do"];
+                lista.Add(termin);
+
+            }
+            return lista;
         }
     }
 }
