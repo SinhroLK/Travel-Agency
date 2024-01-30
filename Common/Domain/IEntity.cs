@@ -11,7 +11,8 @@ namespace Common.Domain
     {
         string TableName { get; }
         string Values { get; }
-
+        int id { get; }
+        string idColumnName { get; }
         List<IEntity> VratiReaderListu(SqlDataReader reader);
     }
 }

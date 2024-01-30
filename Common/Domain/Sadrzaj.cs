@@ -17,6 +17,10 @@ namespace Common.Domain
         public string TableName => "Sadrzaj";
         public string Values => $"'{Mesto.MestoId}', {Opis}";
 
+        public int id => RedniBroj;
+
+        public string idColumnName => throw new NotImplementedException();
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();

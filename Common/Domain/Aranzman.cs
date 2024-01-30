@@ -20,6 +20,10 @@ namespace Common.Domain
 
         public string Values => $"'{ImeAranzmana}', '{Cena}', '{Opis}', '{Mesto.MestoId}'";
 
+        public int id => AranzmanId;
+
+        public string idColumnName => throw new NotImplementedException();
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();

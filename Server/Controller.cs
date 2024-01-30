@@ -56,5 +56,12 @@ namespace Server
             dodajVodica.ExecuteTemplate();
             return dodajVodica.Result;
         }
+
+        internal object ObrisiVodica(Vodic argument)
+        {
+            ObrisiVodicaSO obrisiVodica = new ObrisiVodicaSO(argument);
+            obrisiVodica.ExecuteTemplate();
+            return obrisiVodica.Result;
+        }
     }
 }

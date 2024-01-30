@@ -50,6 +50,7 @@
             // 
             this.dgvVodici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVodici.Location = new System.Drawing.Point(28, 311);
+            this.dgvVodici.MultiSelect = false;
             this.dgvVodici.Name = "dgvVodici";
             this.dgvVodici.RowHeadersWidth = 51;
             this.dgvVodici.RowTemplate.Height = 24;

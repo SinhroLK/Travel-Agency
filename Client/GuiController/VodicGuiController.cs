@@ -14,22 +14,43 @@ namespace Client.GuiController
 {
     public class VodicGuiController
     {
-        private UCVodic dodajVodica;
+        private UCVodic ucVodic;
         internal Control KreirajDodajVodica()
         {
-            dodajVodica = new UCVodic();
-            dodajVodica.btnDodajVodica.Click += DodajVodica;
-            dodajVodica.txtPretraga.TextChanged += Pretraga;
-            return dodajVodica;
+            ucVodic = new UCVodic();
+            ucVodic.btnDodajVodica.Click += DodajVodica;
+            ucVodic.txtPretraga.TextChanged += Pretraga;
+            ucVodic.btnObrisiVodica.Click += ObrisiVodica;
+            return ucVodic;
+        }
+
+        private void ObrisiVodica(object sender, EventArgs e)
+        {
+            int rowIndex = ucVodic.dgvVodici.SelectedCells[0].RowIndex;
+            Vodic vodic = ucVodic.dgvVodici.Rows[rowIndex].DataBoundItem as Vodic;
+            //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
+            Response response = Communication.Instance.ObrisiVodica(vodic);
+            if (response.Exception == null)
+            {
+                MessageBox.Show("Uspesno ste obrisali vodica");
+                ucVodic.txtPretraga.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Doslo je do greske pri brisanju vodica");
+                Debug.WriteLine(">>>", response.Exception.Message);
+            }
+
+
         }
         #region pretraga
         private void Pretraga(object sender, EventArgs e)
         {
-            string filter = dodajVodica.txtPretraga.Text;
-            BindingList<Vodic> temp = dodajVodica.vodici;
+            string filter = ucVodic.txtPretraga.Text;
+            BindingList<Vodic> temp = ucVodic.vodici;
             if (string.IsNullOrEmpty(filter))
             {
-                dodajVodica.filterVodici = dodajVodica.vodici;
+                ucVodic.filterVodici = ucVodic.vodici;
             }
             else
             {
@@ -40,7 +61,7 @@ namespace Client.GuiController
                     {
                         tempVodic.Add(vodic);
                     }
-                    dodajVodica.filterVodici = new BindingList<Vodic>(tempVodic);
+                    ucVodic.filterVodici = new BindingList<Vodic>(tempVodic);
                 }
             }
             RefreshDataGridView();
@@ -48,38 +69,38 @@ namespace Client.GuiController
 
         private void RefreshDataGridView()
         {
-            dodajVodica.dgvVodici.DataSource = dodajVodica.filterVodici;
-            dodajVodica.dgvVodici.Columns["TableName"].Visible = false;
-            dodajVodica.dgvVodici.Columns["VodicId"].Visible = false;
-            dodajVodica.dgvVodici.Columns["Values"].Visible = false;
+            ucVodic.dgvVodici.DataSource = ucVodic.filterVodici;
+            ucVodic.dgvVodici.Columns["TableName"].Visible = false;
+            ucVodic.dgvVodici.Columns["VodicId"].Visible = false;
+            ucVodic.dgvVodici.Columns["Values"].Visible = false;
         }
         #endregion
         private void DodajVodica(object sender, EventArgs e)
         {
-            bool datumRodjenjaProvera = DateTime.Now.Year - dodajVodica.mcDatumRodjenja.SelectionStart.Year > 18;
-            bool datumIstekaUgovoraProvera = dodajVodica.mcDatumIsteka.SelectionStart.Date > DateTime.Now.Date;
-            bool provera = dodajVodica.txtImePrezime.Text != "" && dodajVodica.txtPlata.Text != "" && dodajVodica.txtBrojTelefona.Text != "" && datumRodjenjaProvera && datumIstekaUgovoraProvera;
+            bool datumRodjenjaProvera = DateTime.Now.Year - ucVodic.mcDatumRodjenja.SelectionStart.Year > 18;
+            bool datumIstekaUgovoraProvera = ucVodic.mcDatumIsteka.SelectionStart.Date > DateTime.Now.Date;
+            bool provera = ucVodic.txtImePrezime.Text != "" && ucVodic.txtPlata.Text != "" && ucVodic.txtBrojTelefona.Text != "" && datumRodjenjaProvera && datumIstekaUgovoraProvera;
             if (provera)
             {
                 try
                 {
                     Vodic vodic = new Vodic
                     {
-                        Ime = dodajVodica.txtImePrezime.Text,
-                        Plata = double.Parse(dodajVodica.txtPlata.Text),
-                        BrojTelefona = dodajVodica.txtBrojTelefona.Text,
-                        DatumRodjenja = dodajVodica.mcDatumRodjenja.SelectionStart,
-                        DatumIstekaUgovora = dodajVodica.mcDatumIsteka.SelectionStart
+                        Ime = ucVodic.txtImePrezime.Text,
+                        Plata = double.Parse(ucVodic.txtPlata.Text),
+                        BrojTelefona = ucVodic.txtBrojTelefona.Text,
+                        DatumRodjenja = ucVodic.mcDatumRodjenja.SelectionStart,
+                        DatumIstekaUgovora = ucVodic.mcDatumIsteka.SelectionStart
                     };
                     Response response = Communication.Instance.KreirajVodica(vodic);
                     if (response.Exception == null)
                     {
                         MessageBox.Show("Uspesno ste dodali vodica!");
-                        dodajVodica.txtImePrezime.Text = "";
-                        dodajVodica.txtPlata.Text = "";
-                        dodajVodica.txtBrojTelefona.Text = "";
-                        dodajVodica.mcDatumIsteka.SetDate(DateTime.Now);
-                        dodajVodica.mcDatumRodjenja.SetDate(DateTime.Now);
+                        ucVodic.txtImePrezime.Text = "";
+                        ucVodic.txtPlata.Text = "";
+                        ucVodic.txtBrojTelefona.Text = "";
+                        ucVodic.mcDatumIsteka.SetDate(DateTime.Now);
+                        ucVodic.mcDatumRodjenja.SetDate(DateTime.Now);
                     }
                     else
                     {
@@ -97,7 +118,8 @@ namespace Client.GuiController
                 if (!datumRodjenjaProvera)
                 {
                     MessageBox.Show("Osoba nema 18 godina");
-                } else if (!datumIstekaUgovoraProvera)
+                } 
+                else if (!datumIstekaUgovoraProvera)
                 {
                     MessageBox.Show("Datum isteka ugovora mora biti datum u budućnosti");
                 }

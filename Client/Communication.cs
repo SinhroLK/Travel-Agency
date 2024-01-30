@@ -96,5 +96,17 @@ namespace Client
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal Response ObrisiVodica(Vodic vodic)
+        {
+            Request request = new Request 
+            { 
+                Argument = vodic, 
+                Operation = Operation.ObrisiVodica 
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }

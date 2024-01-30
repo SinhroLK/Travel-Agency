@@ -19,6 +19,10 @@ namespace Common.Domain
         public string TableName => "Termin";
         public string Values => $"'{Aranzman.AranzmanId}', '{Vodic.VodicId}', '{DatumOd.ToString("yyyyMMdd")}', '{DatumDo.ToString("yyyyMMdd")}'";
 
+        public int id => throw new NotImplementedException();
+
+        public string idColumnName => throw new NotImplementedException();
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();

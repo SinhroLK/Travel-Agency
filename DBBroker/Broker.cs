@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,6 +85,20 @@ namespace DBBroker
             }
             command.Dispose();
             return null;
+        }
+
+        public object Obrisi(IEntity entity)
+        {
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = $"delete from {entity.TableName} where {entity.idColumnName} = {entity.id}";
+            if (command.ExecuteNonQuery() > 0)
+            {
+                command.Dispose();
+                return entity;
+            }
+            command.Dispose();
+            return null;
+
         }
     }
 }

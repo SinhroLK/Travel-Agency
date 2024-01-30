@@ -13,6 +13,7 @@ namespace Common.Communication
         KreirajMesto,
         VratiVodice,
         KreirajVodica,
-        NadjiVodice
+        NadjiVodice,
+        ObrisiVodica
     }
 }

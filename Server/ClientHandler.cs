@@ -67,6 +67,13 @@ namespace Server
                             throw new Exception();
                         }
                         break;
+                    case Operation.ObrisiVodica:
+                        r.Odgovor = Controller.Instance.ObrisiVodica((Vodic)req.Argument);
+                        if(r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
                     default:
                         break;
                 }

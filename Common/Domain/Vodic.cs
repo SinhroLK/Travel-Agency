@@ -19,6 +19,10 @@ namespace Common.Domain
         public string TableName => "Vodic";
         public string Values => $"'{Ime}', '{DatumRodjenja.ToString("yyyyMMdd")}', '{Plata}', '{BrojTelefona}', '{DatumIstekaUgovora.ToString("yyyyMMdd")}'";
 
+        public int id => VodicId;
+
+        public string idColumnName => "vodic_id";
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();
