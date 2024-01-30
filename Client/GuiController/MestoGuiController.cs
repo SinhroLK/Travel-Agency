@@ -38,13 +38,16 @@ namespace Client.GuiController
                     if (response.Exception == null)
                     {
                         MessageBox.Show("Uspesno ste dodali mesto!");
+                        dodajMesto.txtNazivMesta.Text = "";
+                        dodajMesto.txtValuta.Text = "";
+                        dodajMesto.txtBrojStanovnika.Text = "";
                     }
                     else
                     {
-                        Debug.WriteLine(response.Exception);
+                        Debug.WriteLine(">>>", response.Exception);
                     }
                 }
-                catch (System.FormatException ex)
+                catch (FormatException)
                 {
 
                     MessageBox.Show("Broj stanovnika mora biti brojčana vrednost");

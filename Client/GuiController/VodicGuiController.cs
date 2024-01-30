@@ -56,31 +56,55 @@ namespace Client.GuiController
         #endregion
         private void DodajVodica(object sender, EventArgs e)
         {
-            bool rodjenje_provera = DateTime.Now.Year - dodajVodica.mcDatumRodjenja.SelectionStart.Year > 18;
-            bool provera = dodajVodica.txtImePrezime.Text != "" && dodajVodica.txtPlata.Text != "" && dodajVodica.txtBrojTelefona.Text != "" && rodjenje_provera && dodajVodica.mcDatumIsteka.SelectionStart.Date != DateTime.Now.Date;
+            bool datumRodjenjaProvera = DateTime.Now.Year - dodajVodica.mcDatumRodjenja.SelectionStart.Year > 18;
+            bool datumIstekaUgovoraProvera = dodajVodica.mcDatumIsteka.SelectionStart.Date > DateTime.Now.Date;
+            bool provera = dodajVodica.txtImePrezime.Text != "" && dodajVodica.txtPlata.Text != "" && dodajVodica.txtBrojTelefona.Text != "" && datumRodjenjaProvera && datumIstekaUgovoraProvera;
             if (provera)
             {
-                Vodic vodic = new Vodic
+                try
                 {
-                    Ime = dodajVodica.txtImePrezime.Text,
-                    Plata = double.Parse(dodajVodica.txtPlata.Text),
-                    BrojTelefona = dodajVodica.txtBrojTelefona.Text,
-                    DatumRodjenja = dodajVodica.mcDatumRodjenja.SelectionStart,
-                    DatumIstekaUgovora = dodajVodica.mcDatumIsteka.SelectionStart
-                };
-                Response response = Communication.Instance.KreirajVodica(vodic);
-                if (response.Exception == null)
-                {
-                    MessageBox.Show("Uspesno ste dodali vodica!");
+                    Vodic vodic = new Vodic
+                    {
+                        Ime = dodajVodica.txtImePrezime.Text,
+                        Plata = double.Parse(dodajVodica.txtPlata.Text),
+                        BrojTelefona = dodajVodica.txtBrojTelefona.Text,
+                        DatumRodjenja = dodajVodica.mcDatumRodjenja.SelectionStart,
+                        DatumIstekaUgovora = dodajVodica.mcDatumIsteka.SelectionStart
+                    };
+                    Response response = Communication.Instance.KreirajVodica(vodic);
+                    if (response.Exception == null)
+                    {
+                        MessageBox.Show("Uspesno ste dodali vodica!");
+                        dodajVodica.txtImePrezime.Text = "";
+                        dodajVodica.txtPlata.Text = "";
+                        dodajVodica.txtBrojTelefona.Text = "";
+                        dodajVodica.mcDatumIsteka.SetDate(DateTime.Now);
+                        dodajVodica.mcDatumRodjenja.SetDate(DateTime.Now);
+                    }
+                    else
+                    {
+                        Debug.WriteLine(">>>", response.Exception.Message);
+                    }
                 }
-                else
+                catch (FormatException)
                 {
-                    Debug.WriteLine(response.Exception);
+
+                    MessageBox.Show("Plata mora biti brojcana vrednost");
                 }
             }
             else
             {
-                MessageBox.Show("Molimo popunite sva polja");
+                if (!datumRodjenjaProvera)
+                {
+                    MessageBox.Show("Osoba nema 18 godina");
+                } else if (!datumIstekaUgovoraProvera)
+                {
+                    MessageBox.Show("Datum isteka ugovora mora biti datum u budućnosti");
+                }
+                else
+                {
+                    MessageBox.Show("Molimo popunite sva polja");
+                }
             }
         }
     }
