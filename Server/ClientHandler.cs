@@ -47,7 +47,7 @@ namespace Server
                             throw new Exception();
                         }
                         break;
-                    case Operation.VratiGradove:
+                    case Operation.VratiMesta:
                         r.Odgovor = Controller.Instance.VratiMesta((Mesto)req.Argument);
                         break;
                     case Operation.KreirajMesto:

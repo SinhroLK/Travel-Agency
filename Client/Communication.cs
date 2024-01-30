@@ -53,7 +53,7 @@ namespace Client
             Request request = new Request
             {
                 Argument = mesto,
-                Operation = Operation.VratiGradove
+                Operation = Operation.VratiMesta
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
@@ -85,7 +85,6 @@ namespace Client
             Console.WriteLine(response.Odgovor);
             return response.Odgovor;
         }
-
         internal Response KreirajVodica(Vodic vodic)
         {
             Request request = new Request

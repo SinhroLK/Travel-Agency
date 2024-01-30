@@ -32,22 +32,9 @@ namespace Server
         }
         internal List<Mesto> VratiMesta(Mesto mesto)
         {
-            try
-            {
-                broker.OpenConnection();
-                return broker.VratiListu(mesto).Select(x => new Mesto() 
-                { 
-                    MestoId = ((Mesto)x).MestoId,
-                    NazivMesta = ((Mesto)x).NazivMesta,
-                    Valuta = ((Mesto)x).Valuta,
-                    BrojStanovnika = ((Mesto)x).BrojStanovnika
-
-                }).ToList();
-            }
-            finally
-            {
-                broker.CloseConnection();
-            }
+            VratiMestaSO vratiMesta = new VratiMestaSO(mesto);
+            vratiMesta.ExecuteTemplate();
+            return (List<Mesto>)vratiMesta.Result;
         }
         internal object KreirajMesto(Mesto argument)
         {
@@ -56,25 +43,11 @@ namespace Server
             return dodajMesto.Result;
         }
 
-        internal object VratiVodice(Vodic vodic)
+        internal List<Vodic> VratiVodice(Vodic vodic)
         {
-            try
-            {
-                broker.OpenConnection();
-                return broker.VratiListu(vodic).Select(x => new Vodic()
-                {
-                    VodicId = ((Vodic)x).VodicId,
-                    Ime = ((Vodic)x).Ime,
-                    Plata = ((Vodic)x).Plata,
-                    BrojTelefona = ((Vodic)x).BrojTelefona,
-                    DatumRodjenja = ((Vodic)x).DatumRodjenja,
-                    DatumIstekaUgovora = ((Vodic)x).DatumIstekaUgovora
-                }).ToList();
-            }
-            finally
-            {
-                broker.CloseConnection();
-            }
+            VratiVodiceSO vratiVodice = new VratiVodiceSO(vodic);
+            vratiVodice.ExecuteTemplate();
+            return (List<Vodic>)vratiVodice.Result;
         }
 
         internal object KreirajVodica(Vodic argument)

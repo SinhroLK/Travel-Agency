@@ -9,9 +9,10 @@ namespace Common.Communication
     public enum Operation
     {
         Login,
-        VratiGradove,
+        VratiMesta,
         KreirajMesto,
         VratiVodice,
-        KreirajVodica
+        KreirajVodica,
+        NadjiVodice
     }
 }

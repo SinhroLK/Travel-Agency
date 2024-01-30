@@ -63,7 +63,7 @@ namespace DBBroker
             return null;
         }
 
-        public List<IEntity> VratiListu(IEntity objekat)
+        public List<IEntity> VratiSve(IEntity objekat)
         {
             SqlCommand command = connection.CreateCommand();
             command.CommandText = $"select * from {objekat.TableName}";

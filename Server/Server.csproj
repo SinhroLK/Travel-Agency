@@ -62,6 +62,8 @@
     <Compile Include="SystemOperation\DodajVodicaSO.cs" />
     <Compile Include="SystemOperation\LoginSO.cs" />
     <Compile Include="SystemOperation\SystemOperationBase.cs" />
+    <Compile Include="SystemOperation\VratiMestaSO.cs" />
+    <Compile Include="SystemOperation\VratiVodiceSO.cs" />
     <EmbeddedResource Include="FrmServer.resx">
       <DependentUpon>FrmServer.cs</DependentUpon>
     </EmbeddedResource>
