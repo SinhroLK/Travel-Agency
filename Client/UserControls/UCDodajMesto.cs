@@ -18,7 +18,6 @@ namespace Client.UserControls
             InitializeComponent();
             Timer timer = new Timer();
             timer.Interval = 500;
-            
             timer.Tick += AzurirajTabelu;
             timer.Start();
         }

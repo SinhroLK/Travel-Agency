@@ -22,7 +22,7 @@ namespace Client.GuiController
             dodajVodica.txtPretraga.TextChanged += Pretraga;
             return dodajVodica;
         }
-
+        #region pretraga
         private void Pretraga(object sender, EventArgs e)
         {
             string filter = dodajVodica.txtPretraga.Text;
@@ -53,7 +53,7 @@ namespace Client.GuiController
             dodajVodica.dgvVodici.Columns["VodicId"].Visible = false;
             dodajVodica.dgvVodici.Columns["Values"].Visible = false;
         }
-
+        #endregion
         private void DodajVodica(object sender, EventArgs e)
         {
             bool rodjenje_provera = DateTime.Now.Year - dodajVodica.mcDatumRodjenja.SelectionStart.Year > 18;

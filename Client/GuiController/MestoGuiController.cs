@@ -24,22 +24,30 @@ namespace Client.GuiController
 
         private void DodajMesto(object sender, EventArgs e)
         {
-            if(dodajMesto.txtNazivMesta.Text == "" || dodajMesto.txtValuta.Text == "" || dodajMesto.txtBrojStanovnika.Text == "||")
+            if(dodajMesto.txtNazivMesta.Text != "" && dodajMesto.txtValuta.Text != "" && dodajMesto.txtBrojStanovnika.Text != "")
             {
-                Mesto mesto = new Mesto
+                try
                 {
-                    NazivMesta = dodajMesto.txtNazivMesta.Text,
-                    Valuta = dodajMesto.txtValuta.Text,
-                    BrojStanovnika = int.Parse(dodajMesto.txtBrojStanovnika.Text)
-                };
-                Response response = Communication.Instance.KreirajMesto(mesto);
-                if (response.Exception == null)
-                {
-                    MessageBox.Show("Uspesno ste dodali mesto!");
+                    Mesto mesto = new Mesto
+                    {
+                        NazivMesta = dodajMesto.txtNazivMesta.Text,
+                        Valuta = dodajMesto.txtValuta.Text,
+                        BrojStanovnika = int.Parse(dodajMesto.txtBrojStanovnika.Text)
+                    };
+                    Response response = Communication.Instance.KreirajMesto(mesto);
+                    if (response.Exception == null)
+                    {
+                        MessageBox.Show("Uspesno ste dodali mesto!");
+                    }
+                    else
+                    {
+                        Debug.WriteLine(response.Exception);
+                    }
                 }
-                else
+                catch (System.FormatException ex)
                 {
-                    Debug.WriteLine(response.Exception);
+
+                    MessageBox.Show("Broj stanovnika mora biti brojčana vrednost");
                 }
             }
             else
