@@ -48,6 +48,8 @@ namespace Client.UserControls
                 dgvVodici.Columns["TableName"].Visible = false;
                 dgvVodici.Columns["VodicId"].Visible = false;
                 dgvVodici.Columns["Values"].Visible = false;
+                dgvVodici.Columns["Id"].Visible = false;
+                dgvVodici.Columns["IdColumnName"].Visible = false;
             } 
         }
         //private void txtPretraga_TextChanged(object sender, EventArgs e)

@@ -59,12 +59,19 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuiController\AranzmanGuiController.cs" />
     <Compile Include="GuiController\LoginGuiController.cs" />
     <Compile Include="GuiController\MainCoordinator.cs" />
     <Compile Include="GuiController\MestoGuiController.cs" />
     <Compile Include="GuiController\VodicGuiController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UCAranzman.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCAranzman.Designer.cs">
+      <DependentUpon>UCAranzman.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCDodajMesto.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +93,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCAranzman.resx">
+      <DependentUpon>UCAranzman.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCDodajMesto.resx">
       <DependentUpon>UCDodajMesto.cs</DependentUpon>

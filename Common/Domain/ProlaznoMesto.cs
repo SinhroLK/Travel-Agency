@@ -16,7 +16,7 @@ namespace Common.Domain
         public bool Prenociste { get; set; }
 
         public string TableName => "ProlaznoMesto";
-        public string Values => $"'{Aranzman.AranzmanId}', '{Mesto.MestoId}', '{Satnica}', '{(Prenociste ? 1 : 0)}'";
+        public string Values => $"'{Aranzman.AranzmanId}', '{Mesto.MestoId}', {Satnica}, '{(Prenociste ? 1 : 0)}'";
 
         public int id => throw new NotImplementedException();
 

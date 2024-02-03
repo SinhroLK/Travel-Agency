@@ -58,12 +58,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
+    <Compile Include="SystemOperation\DodajAranzmanSO.cs" />
     <Compile Include="SystemOperation\DodajMestoSO.cs" />
     <Compile Include="SystemOperation\DodajSadrzajSO.cs" />
     <Compile Include="SystemOperation\DodajVodicaSO.cs" />
     <Compile Include="SystemOperation\LoginSO.cs" />
     <Compile Include="SystemOperation\ObrisiVodicaSO.cs" />
     <Compile Include="SystemOperation\SystemOperationBase.cs" />
+    <Compile Include="SystemOperation\VratiAranzmaneSO.cs" />
     <Compile Include="SystemOperation\VratiMestaSO.cs" />
     <Compile Include="SystemOperation\VratiVodiceSO.cs" />
     <EmbeddedResource Include="FrmServer.resx">

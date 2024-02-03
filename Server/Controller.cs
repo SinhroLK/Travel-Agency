@@ -70,5 +70,19 @@ namespace Server
             dodajSadrzaj.ExecuteTemplate();
             return dodajSadrzaj.Result;
         }
+
+        internal object KreirajAranzman(Aranzman argument)
+        {
+            DodajAranzmanSO dodajAranzman = new DodajAranzmanSO(argument);
+            dodajAranzman.ExecuteTemplate();
+            return dodajAranzman.Result;
+        }
+
+        internal object VratiAranzmane(Aranzman argument)
+        {
+            VratiAranzmaneSO vratiAranzmane = new VratiAranzmaneSO(argument);
+            vratiAranzmane.ExecuteTemplate();
+            return (List<Aranzman>)vratiAranzmane.Result;
+        }
     }
 }

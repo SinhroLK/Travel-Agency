@@ -15,6 +15,8 @@ namespace Common.Communication
         KreirajVodica,
         NadjiVodice,
         ObrisiVodica,
-        KreirajSadrzaj
+        KreirajSadrzaj,
+        KreirajAranzman,
+        VratiAranzmane
     }
 }

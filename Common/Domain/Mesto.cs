@@ -16,7 +16,7 @@ namespace Common.Domain
         public int BrojStanovnika { get; set; }
 
         public string TableName => "Mesto";
-        public string Values => $"'{NazivMesta}', '{Valuta}', '{BrojStanovnika}'";
+        public string Values => $"'{NazivMesta}', '{Valuta}', {BrojStanovnika}";
 
         public int id => MestoId;
 

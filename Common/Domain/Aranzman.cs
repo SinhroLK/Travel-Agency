@@ -12,17 +12,17 @@ namespace Common.Domain
     {
         public int AranzmanId { get; set; }
         public string ImeAranzmana { get; set; }
-        public double Cena { get; set; }
+        public int Cena { get; set; }
         public string Opis { get; set; }
         public Mesto Mesto { get; set; }
 
         public string TableName => "Aranzman";
 
-        public string Values => $"'{ImeAranzmana}', '{Cena}', '{Opis}', '{Mesto.MestoId}'";
+        public string Values => $"'{ImeAranzmana}', {Cena}, '{Opis}', {Mesto.MestoId}";
 
         public int id => AranzmanId;
 
-        public string idColumnName => throw new NotImplementedException();
+        public string idColumnName => "aranzman_id";
 
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
@@ -32,7 +32,7 @@ namespace Common.Domain
                 Aranzman ar = new Aranzman();
                 ar.AranzmanId = (int)reader["aranzman_id"];
                 ar.ImeAranzmana = (string)reader["ime_aranzmana"];
-                ar.Cena = (double)reader["cena"];
+                ar.Cena = (int)reader["cena"];
                 ar.Opis = (string)reader["opis"];
                 Mesto me = new Mesto();
                 me.MestoId = (int)reader["mesto_id"];

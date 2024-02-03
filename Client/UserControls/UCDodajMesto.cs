@@ -21,6 +21,7 @@ namespace Client.UserControls
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
             cbMesta.DataSource = mesta;
             cbMesta.DisplayMember = "NazivMesta";
+            cbMesta.SelectedItem = null;
             Timer timer = new Timer();
             timer.Interval = 500;
             timer.Tick += AzurirajTabelu;

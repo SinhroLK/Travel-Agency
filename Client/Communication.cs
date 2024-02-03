@@ -121,5 +121,30 @@ namespace Client
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal object VratiAranzmane(Aranzman aranzman)
+        {
+            Request request = new Request
+            {
+                Argument = aranzman,
+                Operation = Operation.VratiAranzmane
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            Console.WriteLine(response.Odgovor);
+            return response.Odgovor;
+        }
+
+        internal Response KreirajAranzman(Aranzman aranzman)
+        {
+            Request request = new Request
+            {
+                Argument = aranzman,
+                Operation = Operation.KreirajAranzman
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }

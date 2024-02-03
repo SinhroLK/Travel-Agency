@@ -26,7 +26,7 @@ namespace Client.GuiController
         private void DodajSadrzaj(object sender, EventArgs e)
         {
             Mesto mesto = dodajMesto.cbMesta.SelectedItem as Mesto;
-            if(dodajMesto.txtSadrzaj.Text != "")
+            if(dodajMesto.txtSadrzaj.Text != "" && mesto != null)
             {
               
                 Sadrzaj sadrzaj = new Sadrzaj
@@ -38,6 +38,8 @@ namespace Client.GuiController
                 if(response.Exception == null)
                 {
                     MessageBox.Show($"Uspesno ste dodali sadrzaj za {mesto.NazivMesta}");
+                    dodajMesto.txtSadrzaj.Text = "";
+                    dodajMesto.cbMesta.SelectedItem = null;
                 }
                 else
                 {
@@ -46,7 +48,7 @@ namespace Client.GuiController
             }
             else
             {
-                MessageBox.Show("Molimo vas da popunite polje za opis sadrzaja");
+                MessageBox.Show("Molimo Vas da popunite polje za opis sadrzaja i odaberite mesto");
             }
         }
 
