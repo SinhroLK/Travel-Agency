@@ -63,5 +63,12 @@ namespace Server
             obrisiVodica.ExecuteTemplate();
             return obrisiVodica.Result;
         }
+
+        internal object KreirajSadrzaj(Sadrzaj argument)
+        {
+            DodajSadrzajSO dodajSadrzaj = new DodajSadrzajSO(argument);
+            dodajSadrzaj.ExecuteTemplate();
+            return dodajSadrzaj.Result;
+        }
     }
 }

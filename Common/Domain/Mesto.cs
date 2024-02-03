@@ -20,7 +20,7 @@ namespace Common.Domain
 
         public int id => MestoId;
 
-        public string idColumnName => throw new NotImplementedException();
+        public string idColumnName => "mesto_id";
 
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {

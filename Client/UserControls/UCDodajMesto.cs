@@ -16,6 +16,11 @@ namespace Client.UserControls
         public UCDodajMesto()
         {
             InitializeComponent();
+            Mesto mesto = new Mesto();
+            List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
+            BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
+            cbMesta.DataSource = mesta;
+            cbMesta.DisplayMember = "NazivMesta";
             Timer timer = new Timer();
             timer.Interval = 500;
             timer.Tick += AzurirajTabelu;
@@ -31,6 +36,8 @@ namespace Client.UserControls
             dgvMesta.Columns["MestoId"].Visible = false;
             dgvMesta.Columns["TableName"].Visible = false;
             dgvMesta.Columns["Values"].Visible = false;
+            dgvMesta.Columns["Id"].Visible = false;
+            dgvMesta.Columns["IdColumnName"].Visible = false;
         }
     }
 }

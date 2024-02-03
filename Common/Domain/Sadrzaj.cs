@@ -15,11 +15,11 @@ namespace Common.Domain
         public string Opis { get; set; }
 
         public string TableName => "Sadrzaj";
-        public string Values => $"'{Mesto.MestoId}', {Opis}";
+        public string Values => $"{Mesto.MestoId}, '{Opis}'";
 
         public int id => RedniBroj;
 
-        public string idColumnName => throw new NotImplementedException();
+        public string idColumnName => "redni_broj";
 
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {

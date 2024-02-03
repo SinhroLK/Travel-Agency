@@ -19,7 +19,35 @@ namespace Client.GuiController
         {
             dodajMesto = new UCDodajMesto();
             dodajMesto.btnDodajMesto.Click += DodajMesto;
+            dodajMesto.btnDodajSadrzaj.Click += DodajSadrzaj;
             return dodajMesto;
+        }
+
+        private void DodajSadrzaj(object sender, EventArgs e)
+        {
+            Mesto mesto = dodajMesto.cbMesta.SelectedItem as Mesto;
+            if(dodajMesto.txtSadrzaj.Text != "")
+            {
+              
+                Sadrzaj sadrzaj = new Sadrzaj
+                {
+                    Mesto = mesto,
+                    Opis = dodajMesto.txtSadrzaj.Text
+                };
+                Response response = Communication.Instance.KreirajSadrzaj(sadrzaj);
+                if(response.Exception == null)
+                {
+                    MessageBox.Show($"Uspesno ste dodali sadrzaj za {mesto.NazivMesta}");
+                }
+                else
+                {
+                    Debug.WriteLine(">>>", response.Exception.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Molimo vas da popunite polje za opis sadrzaja");
+            }
         }
 
         private void DodajMesto(object sender, EventArgs e)

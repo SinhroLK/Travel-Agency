@@ -40,29 +40,40 @@ namespace Client.GuiController
                 MessageBox.Show("Doslo je do greske pri brisanju vodica");
                 Debug.WriteLine(">>>", response.Exception.Message);
             }
-
-
         }
+
         #region pretraga
         private void Pretraga(object sender, EventArgs e)
         {
             string filter = ucVodic.txtPretraga.Text;
-            BindingList<Vodic> temp = ucVodic.vodici;
-            if (string.IsNullOrEmpty(filter))
+            //BindingList<Vodic> temp = ucVodic.vodici;
+            //if (string.IsNullOrEmpty(filter))
+            //{
+            //    ucVodic.filterVodici = ucVodic.vodici;
+            //}
+            //else
+            //{
+            //    List<Vodic> tempVodic = new List<Vodic>();
+            //    foreach (Vodic vodic in temp)
+            //    {
+            //        if (vodic.Ime.ToLower().Contains(filter.ToLower()))
+            //        {
+            //            tempVodic.Add(vodic);
+            //        }
+            //        ucVodic.filterVodici = new BindingList<Vodic>(tempVodic);
+            //    }
+            //}
+            Vodic vodic = new Vodic();
+            List<Vodic> listaVodica = (List<Vodic>)Communication.Instance.VratiVodice(vodic);
+            ucVodic.vodici = new BindingList<Vodic>(listaVodica);
+            List<Vodic> tempVodic = new List<Vodic>();
+            foreach (Vodic v in ucVodic.vodici)
             {
-                ucVodic.filterVodici = ucVodic.vodici;
-            }
-            else
-            {
-                List<Vodic> tempVodic = new List<Vodic>();
-                foreach (Vodic vodic in temp)
+                if (v.Ime.ToLower().Contains(filter.ToLower()))
                 {
-                    if (vodic.Ime.ToLower().Contains(filter.ToLower()))
-                    {
-                        tempVodic.Add(vodic);
-                    }
-                    ucVodic.filterVodici = new BindingList<Vodic>(tempVodic);
+                    tempVodic.Add(v);
                 }
+                ucVodic.filterVodici = new BindingList<Vodic>(tempVodic);
             }
             RefreshDataGridView();
         }

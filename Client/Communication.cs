@@ -1,4 +1,5 @@
-﻿using Common.Communication;
+﻿using Client.UserControls;
+using Common.Communication;
 using Common.Domain;
 using System;
 using System.Collections.Generic;
@@ -103,6 +104,18 @@ namespace Client
             { 
                 Argument = vodic, 
                 Operation = Operation.ObrisiVodica 
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response KreirajSadrzaj(Sadrzaj sadrzaj)
+        {
+            Request request = new Request
+            {
+                Argument = sadrzaj,
+                Operation = Operation.KreirajSadrzaj
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();

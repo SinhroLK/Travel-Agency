@@ -74,6 +74,13 @@ namespace Server
                             throw new Exception();
                         }
                         break;
+                    case Operation.KreirajSadrzaj:
+                        r.Odgovor = Controller.Instance.KreirajSadrzaj((Sadrzaj)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
                     default:
                         break;
                 }
