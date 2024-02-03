@@ -21,6 +21,8 @@ namespace Common.Domain
 
         public string idColumnName => "redni_broj";
 
+        public string zaJoin => "";
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();

@@ -13,6 +13,7 @@ namespace Common.Domain
         string Values { get; }
         int id { get; }
         string idColumnName { get; }
+        string zaJoin { get; }
         List<IEntity> VratiReaderListu(SqlDataReader reader);
     }
 }

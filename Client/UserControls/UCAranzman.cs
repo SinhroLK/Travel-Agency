@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,14 +34,14 @@ namespace Client.UserControls
             aranzmani = new BindingList<Aranzman>(listaAranzmana);
             filterAranzmani = new BindingList<Aranzman>(listaAranzmana);
 
-            
-
             dgvAranzmani.DataSource = aranzmani;
             dgvAranzmani.Columns["TableName"].Visible = false;
             dgvAranzmani.Columns["AranzmanId"].Visible = false;
             dgvAranzmani.Columns["Values"].Visible = false;
             dgvAranzmani.Columns["Id"].Visible = false;
             dgvAranzmani.Columns["IdColumnName"].Visible = false;
+            dgvAranzmani.Columns["ZaJoin"].Visible = false;
+            
         }
         public void InitializeTimer()
         {

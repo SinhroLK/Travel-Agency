@@ -67,7 +67,7 @@ namespace DBBroker
         public List<IEntity> VratiSve(IEntity objekat)
         {
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = $"select * from {objekat.TableName}";
+            command.CommandText = $"select * from {objekat.TableName} {objekat.zaJoin}";
             List<IEntity> list = new List<IEntity>();
             SqlDataReader reader = command.ExecuteReader();
             list = objekat.VratiReaderListu(reader); 

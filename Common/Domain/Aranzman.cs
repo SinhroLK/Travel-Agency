@@ -24,6 +24,11 @@ namespace Common.Domain
 
         public string idColumnName => "aranzman_id";
 
+        public string zaJoin => "join Mesto m on (Aranzman.mesto_id = m.mesto_id)";
+        public override string ToString()
+        {
+            return ImeAranzmana + " " +Mesto.ToString();
+        }
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();
@@ -36,6 +41,7 @@ namespace Common.Domain
                 ar.Opis = (string)reader["opis"];
                 Mesto me = new Mesto();
                 me.MestoId = (int)reader["mesto_id"];
+                me.NazivMesta = (string)reader["naziv"];
                 ar.Mesto = me;
                 lista.Add(ar);
             }

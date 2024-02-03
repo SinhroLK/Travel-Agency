@@ -22,6 +22,13 @@ namespace Common.Domain
 
         public string idColumnName => "mesto_id";
 
+        public string zaJoin => "";
+
+        public override string ToString()
+        {
+            return NazivMesta;
+        }
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();
