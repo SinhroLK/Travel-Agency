@@ -20,14 +20,6 @@ namespace Client.UserControls
         {
             InitializeComponent();
             InitializeTimer();
-            Vodic vodic = new Vodic();
-            List<Vodic> listaVodica = (List<Vodic>)Communication.Instance.VratiVodice(vodic);
-            vodici = new BindingList<Vodic>(listaVodica);
-            filterVodici = new BindingList<Vodic>(listaVodica);
-            dgvVodici.DataSource = vodici;
-            dgvVodici.Columns["TableName"].Visible = false;
-            dgvVodici.Columns["VodicId"].Visible = false;
-            dgvVodici.Columns["Values"].Visible = false;
         }
         public void InitializeTimer()
         {

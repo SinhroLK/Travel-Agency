@@ -1,6 +1,6 @@
 ﻿namespace Client.UserControls
 {
-    partial class UCDodajMesto
+    partial class UCMesto
     {
         /// <summary> 
         /// Required designer variable.

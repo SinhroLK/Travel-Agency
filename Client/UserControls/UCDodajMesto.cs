@@ -11,18 +11,23 @@ using System.Windows.Forms;
 
 namespace Client.UserControls
 {
-    public partial class UCDodajMesto : UserControl
+    public partial class UCMesto : UserControl
     {
-        public UCDodajMesto()
+        Timer timer = new Timer();
+        public UCMesto()
         {
             InitializeComponent();
+            InitializeTimer();
             Mesto mesto = new Mesto();
             List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
             cbMesta.DataSource = mesta;
             cbMesta.DisplayMember = "NazivMesta";
-            cbMesta.SelectedItem = null;
-            Timer timer = new Timer();
+            cbMesta.SelectedItem = null;;
+        }
+
+        public void InitializeTimer()
+        {
             timer.Interval = 500;
             timer.Tick += AzurirajTabelu;
             timer.Start();

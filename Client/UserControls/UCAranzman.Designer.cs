@@ -193,7 +193,7 @@
         public System.Windows.Forms.Label lblComboMesta;
         public System.Windows.Forms.ComboBox cbMesta;
         public System.Windows.Forms.Button btnDodajAranzman;
-        private System.Windows.Forms.TextBox txtPretraga;
+        public System.Windows.Forms.TextBox txtPretraga;
         public System.Windows.Forms.Label lblPretraga;
     }
 }

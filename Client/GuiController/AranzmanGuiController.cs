@@ -3,6 +3,7 @@ using Common.Communication;
 using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace Client.GuiController
         {
             ucAranzman = new UCAranzman();
             ucAranzman.btnDodajAranzman.Click += DodajAranzman;
+            ucAranzman.txtPretraga.TextChanged += Pretraga;
             return ucAranzman;
         }
 
@@ -60,6 +62,35 @@ namespace Client.GuiController
             {
                 MessageBox.Show("Molimo vas popunite sva polja");
             }
+        }
+
+        private void Pretraga(object sender, EventArgs e)
+        {
+            string filter = ucAranzman.txtPretraga.Text;
+            Aranzman aranzman = new Aranzman();
+            List<Aranzman> listaAranzmana = (List<Aranzman>)Communication.Instance.VratiAranzmane(aranzman);
+            ucAranzman.aranzmani = new BindingList<Aranzman>(listaAranzmana);
+            List<Aranzman> tempAranzman = new List<Aranzman>();
+            foreach (Aranzman a in ucAranzman.aranzmani)
+            {
+                if (a.ImeAranzmana.ToLower().Contains(filter.ToLower()) || a.Mesto.NazivMesta.ToLower().Contains(filter.ToLower()))
+                {
+                    tempAranzman.Add(a);
+                }
+                ucAranzman.filterAranzmani = new BindingList<Aranzman>(tempAranzman);
+            }
+            RefreshDataGridView();
+        }
+
+        private void RefreshDataGridView()
+        {
+            ucAranzman.dgvAranzmani.DataSource = ucAranzman.filterAranzmani;
+            ucAranzman.dgvAranzmani.Columns["TableName"].Visible = false;
+            ucAranzman.dgvAranzmani.Columns["AranzmanId"].Visible = false;
+            ucAranzman.dgvAranzmani.Columns["Values"].Visible = false;
+            ucAranzman.dgvAranzmani.Columns["Id"].Visible = false;
+            ucAranzman.dgvAranzmani.Columns["IdColumnName"].Visible = false;
+            ucAranzman.dgvAranzmani.Columns["ZaJoin"].Visible = false;
         }
     }
 }

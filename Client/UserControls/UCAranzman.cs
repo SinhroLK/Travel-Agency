@@ -24,24 +24,9 @@ namespace Client.UserControls
             Mesto mesto = new Mesto();
             List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
-
             cbMesta.DataSource = mesta;
             cbMesta.DisplayMember = "NazivMesta";
-            cbMesta.SelectedItem = null;
-           
-            Aranzman aranzman = new Aranzman();
-            List<Aranzman> listaAranzmana = (List<Aranzman>)Communication.Instance.VratiAranzmane(aranzman);
-            aranzmani = new BindingList<Aranzman>(listaAranzmana);
-            filterAranzmani = new BindingList<Aranzman>(listaAranzmana);
-
-            dgvAranzmani.DataSource = aranzmani;
-            dgvAranzmani.Columns["TableName"].Visible = false;
-            dgvAranzmani.Columns["AranzmanId"].Visible = false;
-            dgvAranzmani.Columns["Values"].Visible = false;
-            dgvAranzmani.Columns["Id"].Visible = false;
-            dgvAranzmani.Columns["IdColumnName"].Visible = false;
-            dgvAranzmani.Columns["ZaJoin"].Visible = false;
-            
+            cbMesta.SelectedItem = null;            
         }
         public void InitializeTimer()
         {

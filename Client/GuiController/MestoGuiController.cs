@@ -13,11 +13,11 @@ namespace Client.GuiController
 {
     public class MestoGuiController
     {
-        private UCDodajMesto dodajMesto;
+        private UCMesto dodajMesto;
 
         internal Control KreirajDodajMesto()
         {
-            dodajMesto = new UCDodajMesto();
+            dodajMesto = new UCMesto();
             dodajMesto.btnDodajMesto.Click += DodajMesto;
             dodajMesto.btnDodajSadrzaj.Click += DodajSadrzaj;
             return dodajMesto;
