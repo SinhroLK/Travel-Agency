@@ -23,6 +23,8 @@ namespace Common.Domain
 
         public string zaJoin => "";
 
+        public string zaSet => "";
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();

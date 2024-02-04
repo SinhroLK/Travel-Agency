@@ -91,5 +91,12 @@ namespace Server
             obrisiAranzman.ExecuteTemplate();
             return obrisiAranzman.Result;
         }
+
+        internal object IzmeniAranzman(Aranzman argument)
+        {
+            IzmeniAranzmanSO izmeniAranzman = new IzmeniAranzmanSO(argument);
+            izmeniAranzman.ExecuteTemplate();
+            return izmeniAranzman.Result;
+        }
     }
 }

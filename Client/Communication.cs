@@ -58,7 +58,7 @@ namespace Client
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
-            Console.WriteLine(response.Odgovor);
+            //Console.WriteLine(response.Odgovor);
             return response.Odgovor;
         }
 
@@ -83,7 +83,7 @@ namespace Client
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
-            Console.WriteLine(response.Odgovor);
+            // Console.WriteLine(response.Odgovor);
             return response.Odgovor;
         }
         internal Response KreirajVodica(Vodic vodic)
@@ -131,7 +131,7 @@ namespace Client
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
-            Console.WriteLine(response.Odgovor);
+            // Console.WriteLine(response.Odgovor);
             return response.Odgovor;
         }
 
@@ -153,6 +153,18 @@ namespace Client
             {
                 Argument = aranzman,
                 Operation = Operation.ObrisiAranzman
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response IzmeniAranzman(Aranzman aranzman)
+        {
+            Request request = new Request
+            {
+                Argument = aranzman,
+                Operation = Operation.IzmeniAranzman
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();

@@ -25,6 +25,9 @@ namespace Common.Domain
         public string idColumnName => "aranzman_id";
 
         public string zaJoin => "join Mesto m on (Aranzman.mesto_id = m.mesto_id)";
+
+        public string zaSet => $"ime_aranzmana='{ImeAranzmana}', cena = {Cena}, opis = '{Opis}', mesto_id={Mesto.MestoId}";
+
         public override string ToString()
         {
             return ImeAranzmana + " " +Mesto.ToString();

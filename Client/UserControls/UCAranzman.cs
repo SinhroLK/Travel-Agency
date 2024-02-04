@@ -20,13 +20,14 @@ namespace Client.UserControls
         public UCAranzman()
         {
             InitializeComponent();
+            btnIzmeni.Enabled = false;
             InitializeTimer();
             Mesto mesto = new Mesto();
             List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
             cbMesta.DataSource = mesta;
             cbMesta.DisplayMember = "NazivMesta";
-            cbMesta.SelectedItem = null;            
+            cbMesta.SelectedItem = null;
         }
         public void InitializeTimer()
         {

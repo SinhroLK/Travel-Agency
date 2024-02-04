@@ -24,6 +24,8 @@ namespace Common.Domain
 
         public string zaJoin => throw new NotImplementedException();
 
+        public string zaSet => throw new NotImplementedException();
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();

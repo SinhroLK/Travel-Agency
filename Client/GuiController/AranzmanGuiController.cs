@@ -15,6 +15,7 @@ namespace Client.GuiController
     public class AranzmanGuiController
     {
         private UCAranzman ucAranzman;
+        Aranzman aranzmanZaIzmenu;
 
         internal Control KreirajDodajAranzman()
         {
@@ -22,24 +23,96 @@ namespace Client.GuiController
             ucAranzman.btnDodajAranzman.Click += DodajAranzman;
             ucAranzman.txtPretraga.TextChanged += Pretraga;
             ucAranzman.btnObrisi.Click += Obrisi;
+            ucAranzman.btnDetalji.Click += OmoguciIzmenu;
+            ucAranzman.btnIzmeni.Click += Izmeni;
             return ucAranzman;
+        }
+
+        private void Izmeni(object sender, EventArgs e)
+        {
+            Mesto mesto = ucAranzman.cbMesta.SelectedItem as Mesto;
+            if (ucAranzman.txtIme.Text != "" && ucAranzman.txtOpis.Text != "" && ucAranzman.txtCena.Text != "" && mesto != null)
+            {
+                try
+                {
+                    aranzmanZaIzmenu.ImeAranzmana = ucAranzman.txtIme.Text;
+                    aranzmanZaIzmenu.Cena = int.Parse(ucAranzman.txtCena.Text);
+                    aranzmanZaIzmenu.Opis = ucAranzman.txtOpis.Text;
+                    aranzmanZaIzmenu.Mesto = mesto;
+                    Response response = Communication.Instance.IzmeniAranzman(aranzmanZaIzmenu);
+                    if (response.Exception == null)
+                    {
+                        MessageBox.Show("Uspesno ste izmenili aranzman!");
+                        ucAranzman.txtOpis.Text = "";
+                        ucAranzman.txtIme.Text = "";
+                        ucAranzman.txtCena.Text = "";
+                        ucAranzman.txtPretraga.Text = "";
+                        ucAranzman.cbMesta.SelectedItem = null;
+                    }
+                    else
+                    {
+                        Debug.WriteLine(">>>", response.Exception);
+                        MessageBox.Show(response.Exception.Message);
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Cena mora biti brojcana vrednost");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sva polja moraju biti popunjena da bi mogli da izmenite podatke. Ponovo popunite sva polja koriscenjem opcije Detalji");
+            }
+            ucAranzman.btnIzmeni.Enabled = false;
+        }
+
+        private void OmoguciIzmenu(object sender, EventArgs e)
+        {
+            if(ucAranzman.txtPretraga.Text != "")
+            {
+                int rowIndex = ucAranzman.dgvAranzmani.SelectedCells[0].RowIndex;
+                aranzmanZaIzmenu = ucAranzman.dgvAranzmani.Rows[rowIndex].DataBoundItem as Aranzman;
+                ucAranzman.txtIme.Text = aranzmanZaIzmenu.ImeAranzmana;
+                ucAranzman.txtCena.Text = aranzmanZaIzmenu.Cena.ToString();
+                ucAranzman.txtOpis.Text = aranzmanZaIzmenu.Opis;
+                ucAranzman.cbMesta.SelectedIndex = ucAranzman.cbMesta.FindStringExact(aranzmanZaIzmenu.Mesto.ToString());
+                ucAranzman.btnIzmeni.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Morate pretraziti aranzmane pre izmene");
+            }
         }
 
         private void Obrisi(object sender, EventArgs e)
         {
-            int rowIndex = ucAranzman.dgvAranzmani.SelectedCells[0].RowIndex;
-            Aranzman aranzman = ucAranzman.dgvAranzmani.Rows[rowIndex].DataBoundItem as Aranzman;
-            //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
-            Response response = Communication.Instance.ObrisiAranzman(aranzman);
-            if (response.Exception == null)
+            if(ucAranzman.txtPretraga.Text != "")
             {
-                MessageBox.Show("Uspesno ste obrisali aranzman");
-                ucAranzman.txtPretraga.Text = "";
+                int rowIndex = ucAranzman.dgvAranzmani.SelectedCells[0].RowIndex;
+                Aranzman aranzman = ucAranzman.dgvAranzmani.Rows[rowIndex].DataBoundItem as Aranzman;
+                //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
+                Response response = Communication.Instance.ObrisiAranzman(aranzman);
+                if (response.Exception == null)
+                {
+                    MessageBox.Show("Uspesno ste obrisali aranzman");
+                    ucAranzman.txtPretraga.Text = "";
+                    ucAranzman.txtOpis.Text = "";
+                    ucAranzman.txtIme.Text = "";
+                    ucAranzman.txtCena.Text = "";
+                    ucAranzman.txtPretraga.Text = "";
+                    ucAranzman.cbMesta.SelectedItem = null;
+                }
+                else
+                {
+                    MessageBox.Show("Doslo je do greske pri brisanju aranzmana");
+                    Debug.WriteLine(">>>", response.Exception.Message);
+                }
             }
             else
             {
-                MessageBox.Show("Doslo je do greske pri brisanju aranzmana");
-                Debug.WriteLine(">>>", response.Exception.Message);
+                MessageBox.Show("Morate pretraziti aranzmane pre brisanja");
             }
         }
 
@@ -64,6 +137,7 @@ namespace Client.GuiController
                         ucAranzman.txtOpis.Text = "";
                         ucAranzman.txtIme.Text = "";
                         ucAranzman.txtCena.Text = "";
+                        ucAranzman.txtPretraga.Text = "";
                         ucAranzman.cbMesta.SelectedItem = null;
                     }
                     else

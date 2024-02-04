@@ -98,6 +98,13 @@ namespace Server
                             throw new Exception();
                         }
                         break;
+                    case Operation.IzmeniAranzman:
+                        r.Odgovor = Controller.Instance.IzmeniAranzman((Aranzman)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
                     default:
                         break;
                 }

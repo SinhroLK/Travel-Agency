@@ -100,5 +100,18 @@ namespace DBBroker
             return null;
 
         }
+
+        public object Izmeni(IEntity objekat)
+        {
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = $"update {objekat.TableName} set {objekat.zaSet} where {objekat.idColumnName} = {objekat.id}";
+            if(command.ExecuteNonQuery() > 0)
+            {
+                command.Dispose();
+                return objekat;
+            }
+            command.Dispose();
+            return null;
+        }
     }
 }

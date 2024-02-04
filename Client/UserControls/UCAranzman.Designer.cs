@@ -107,6 +107,7 @@
             this.dgvAranzmani.Location = new System.Drawing.Point(295, 43);
             this.dgvAranzmani.MultiSelect = false;
             this.dgvAranzmani.Name = "dgvAranzmani";
+            this.dgvAranzmani.ReadOnly = true;
             this.dgvAranzmani.RowHeadersWidth = 51;
             this.dgvAranzmani.RowTemplate.Height = 24;
             this.dgvAranzmani.Size = new System.Drawing.Size(432, 451);

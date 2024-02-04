@@ -24,6 +24,8 @@ namespace Common.Domain
 
         public string zaJoin => "";
 
+        public string zaSet => "";
+
         public override string ToString()
         {
             return NazivMesta;

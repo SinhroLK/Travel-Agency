@@ -26,19 +26,26 @@ namespace Client.GuiController
 
         private void ObrisiVodica(object sender, EventArgs e)
         {
-            int rowIndex = ucVodic.dgvVodici.SelectedCells[0].RowIndex;
-            Vodic vodic = ucVodic.dgvVodici.Rows[rowIndex].DataBoundItem as Vodic;
-            //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
-            Response response = Communication.Instance.ObrisiVodica(vodic);
-            if (response.Exception == null)
+            if(ucVodic.txtPretraga.Text != "")
             {
-                MessageBox.Show("Uspesno ste obrisali vodica");
-                ucVodic.txtPretraga.Text = "";
+                int rowIndex = ucVodic.dgvVodici.SelectedCells[0].RowIndex;
+                Vodic vodic = ucVodic.dgvVodici.Rows[rowIndex].DataBoundItem as Vodic;
+                //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
+                Response response = Communication.Instance.ObrisiVodica(vodic);
+                if (response.Exception == null)
+                {
+                    MessageBox.Show("Uspesno ste obrisali vodica");
+                    ucVodic.txtPretraga.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Doslo je do greske pri brisanju vodica");
+                    Debug.WriteLine(">>>", response.Exception.Message);
+                }
             }
             else
             {
-                MessageBox.Show("Doslo je do greske pri brisanju vodica");
-                Debug.WriteLine(">>>", response.Exception.Message);
+                MessageBox.Show("Morate pretraziti vodice pre brisanja");
             }
         }
 
