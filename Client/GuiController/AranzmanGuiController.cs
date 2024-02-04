@@ -21,7 +21,26 @@ namespace Client.GuiController
             ucAranzman = new UCAranzman();
             ucAranzman.btnDodajAranzman.Click += DodajAranzman;
             ucAranzman.txtPretraga.TextChanged += Pretraga;
+            ucAranzman.btnObrisi.Click += Obrisi;
             return ucAranzman;
+        }
+
+        private void Obrisi(object sender, EventArgs e)
+        {
+            int rowIndex = ucAranzman.dgvAranzmani.SelectedCells[0].RowIndex;
+            Aranzman aranzman = ucAranzman.dgvAranzmani.Rows[rowIndex].DataBoundItem as Aranzman;
+            //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
+            Response response = Communication.Instance.ObrisiAranzman(aranzman);
+            if (response.Exception == null)
+            {
+                MessageBox.Show("Uspesno ste obrisali aranzman");
+                ucAranzman.txtPretraga.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Doslo je do greske pri brisanju aranzmana");
+                Debug.WriteLine(">>>", response.Exception.Message);
+            }
         }
 
         private void DodajAranzman(object sender, EventArgs e)

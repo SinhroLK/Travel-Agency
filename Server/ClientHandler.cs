@@ -91,6 +91,13 @@ namespace Server
                     case Operation.VratiAranzmane:
                         r.Odgovor = Controller.Instance.VratiAranzmane((Aranzman)req.Argument);
                         break;
+                    case Operation.ObrisiAranzman:
+                        r.Odgovor = Controller.Instance.ObrisiAranzman((Aranzman)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
                     default:
                         break;
                 }

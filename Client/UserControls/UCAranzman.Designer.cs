@@ -40,6 +40,9 @@
             this.btnDodajAranzman = new System.Windows.Forms.Button();
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.lblPretraga = new System.Windows.Forms.Label();
+            this.btnObrisi = new System.Windows.Forms.Button();
+            this.btnDetalji = new System.Windows.Forms.Button();
+            this.btnIzmeni = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAranzmani)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,11 +158,41 @@
             this.lblPretraga.TabIndex = 17;
             this.lblPretraga.Text = "Pretraga";
             // 
+            // btnObrisi
+            // 
+            this.btnObrisi.Location = new System.Drawing.Point(116, 351);
+            this.btnObrisi.Name = "btnObrisi";
+            this.btnObrisi.Size = new System.Drawing.Size(134, 35);
+            this.btnObrisi.TabIndex = 18;
+            this.btnObrisi.Text = "Obrisi Aranzman";
+            this.btnObrisi.UseVisualStyleBackColor = true;
+            // 
+            // btnDetalji
+            // 
+            this.btnDetalji.Location = new System.Drawing.Point(116, 392);
+            this.btnDetalji.Name = "btnDetalji";
+            this.btnDetalji.Size = new System.Drawing.Size(134, 35);
+            this.btnDetalji.TabIndex = 19;
+            this.btnDetalji.Text = "Detalji";
+            this.btnDetalji.UseVisualStyleBackColor = true;
+            // 
+            // btnIzmeni
+            // 
+            this.btnIzmeni.Location = new System.Drawing.Point(116, 433);
+            this.btnIzmeni.Name = "btnIzmeni";
+            this.btnIzmeni.Size = new System.Drawing.Size(134, 35);
+            this.btnIzmeni.TabIndex = 20;
+            this.btnIzmeni.Text = "Izmeni Aranzman";
+            this.btnIzmeni.UseVisualStyleBackColor = true;
+            // 
             // UCAranzman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.Controls.Add(this.btnIzmeni);
+            this.Controls.Add(this.btnDetalji);
+            this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.lblPretraga);
             this.Controls.Add(this.txtPretraga);
             this.Controls.Add(this.btnDodajAranzman);
@@ -195,5 +228,8 @@
         public System.Windows.Forms.Button btnDodajAranzman;
         public System.Windows.Forms.TextBox txtPretraga;
         public System.Windows.Forms.Label lblPretraga;
+        public System.Windows.Forms.Button btnObrisi;
+        public System.Windows.Forms.Button btnDetalji;
+        public System.Windows.Forms.Button btnIzmeni;
     }
 }

@@ -84,5 +84,12 @@ namespace Server
             vratiAranzmane.ExecuteTemplate();
             return (List<Aranzman>)vratiAranzmane.Result;
         }
+
+        internal object ObrisiAranzman(Aranzman argument)
+        {
+            ObrisiAranzmanSO obrisiAranzman= new ObrisiAranzmanSO(argument);
+            obrisiAranzman.ExecuteTemplate();
+            return obrisiAranzman.Result;
+        }
     }
 }

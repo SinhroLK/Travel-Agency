@@ -63,6 +63,7 @@
     <Compile Include="SystemOperation\DodajSadrzajSO.cs" />
     <Compile Include="SystemOperation\DodajVodicaSO.cs" />
     <Compile Include="SystemOperation\LoginSO.cs" />
+    <Compile Include="SystemOperation\ObrisiAranzmanSO.cs" />
     <Compile Include="SystemOperation\ObrisiVodicaSO.cs" />
     <Compile Include="SystemOperation\SystemOperationBase.cs" />
     <Compile Include="SystemOperation\VratiAranzmaneSO.cs" />

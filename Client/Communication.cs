@@ -146,5 +146,17 @@ namespace Client
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal Response ObrisiAranzman(Aranzman aranzman)
+        {
+            Request request = new Request
+            {
+                Argument = aranzman,
+                Operation = Operation.ObrisiAranzman
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }
