@@ -57,6 +57,7 @@ namespace Client.UserControls
                 dgvTermini.Columns["IdColumnName"].Visible = false;
                 dgvTermini.Columns["zaJoin"].Visible = false;
                 dgvTermini.Columns["zaSet"].Visible = false;
+                
             }
         }
     }

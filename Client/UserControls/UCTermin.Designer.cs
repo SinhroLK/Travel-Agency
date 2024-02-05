@@ -63,7 +63,7 @@
             // cbAranzman
             // 
             this.cbAranzman.FormattingEnabled = true;
-            this.cbAranzman.Location = new System.Drawing.Point(97, 38);
+            this.cbAranzman.Location = new System.Drawing.Point(79, 38);
             this.cbAranzman.Name = "cbAranzman";
             this.cbAranzman.Size = new System.Drawing.Size(121, 25);
             this.cbAranzman.TabIndex = 10;
@@ -71,7 +71,7 @@
             // cbVodic
             // 
             this.cbVodic.FormattingEnabled = true;
-            this.cbVodic.Location = new System.Drawing.Point(97, 86);
+            this.cbVodic.Location = new System.Drawing.Point(79, 86);
             this.cbVodic.Name = "cbVodic";
             this.cbVodic.Size = new System.Drawing.Size(121, 25);
             this.cbVodic.TabIndex = 11;
@@ -80,7 +80,7 @@
             // 
             this.lblAranzman.AutoSize = true;
             this.lblAranzman.ForeColor = System.Drawing.Color.White;
-            this.lblAranzman.Location = new System.Drawing.Point(17, 46);
+            this.lblAranzman.Location = new System.Drawing.Point(-1, 46);
             this.lblAranzman.Name = "lblAranzman";
             this.lblAranzman.Size = new System.Drawing.Size(74, 17);
             this.lblAranzman.TabIndex = 12;
@@ -90,7 +90,7 @@
             // 
             this.lblVodic.AutoSize = true;
             this.lblVodic.ForeColor = System.Drawing.Color.White;
-            this.lblVodic.Location = new System.Drawing.Point(45, 94);
+            this.lblVodic.Location = new System.Drawing.Point(27, 94);
             this.lblVodic.Name = "lblVodic";
             this.lblVodic.Size = new System.Drawing.Size(46, 17);
             this.lblVodic.TabIndex = 13;
@@ -119,17 +119,17 @@
             // dgvTermini
             // 
             this.dgvTermini.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTermini.Location = new System.Drawing.Point(252, 256);
+            this.dgvTermini.Location = new System.Drawing.Point(224, 256);
             this.dgvTermini.Name = "dgvTermini";
             this.dgvTermini.ReadOnly = true;
             this.dgvTermini.RowHeadersWidth = 51;
             this.dgvTermini.RowTemplate.Height = 24;
-            this.dgvTermini.Size = new System.Drawing.Size(475, 249);
+            this.dgvTermini.Size = new System.Drawing.Size(503, 249);
             this.dgvTermini.TabIndex = 16;
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(97, 132);
+            this.btnDodaj.Location = new System.Drawing.Point(79, 132);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(121, 29);
             this.btnDodaj.TabIndex = 17;
@@ -138,7 +138,7 @@
             // 
             // btnDetalji
             // 
-            this.btnDetalji.Location = new System.Drawing.Point(109, 345);
+            this.btnDetalji.Location = new System.Drawing.Point(79, 345);
             this.btnDetalji.Name = "btnDetalji";
             this.btnDetalji.Size = new System.Drawing.Size(121, 29);
             this.btnDetalji.TabIndex = 18;
@@ -147,7 +147,7 @@
             // 
             // btnIzmeni
             // 
-            this.btnIzmeni.Location = new System.Drawing.Point(109, 380);
+            this.btnIzmeni.Location = new System.Drawing.Point(79, 380);
             this.btnIzmeni.Name = "btnIzmeni";
             this.btnIzmeni.Size = new System.Drawing.Size(121, 29);
             this.btnIzmeni.TabIndex = 19;
@@ -156,7 +156,7 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(109, 415);
+            this.btnObrisi.Location = new System.Drawing.Point(79, 415);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(121, 29);
             this.btnObrisi.TabIndex = 20;
@@ -167,7 +167,7 @@
             // 
             this.lblPretraga.AutoSize = true;
             this.lblPretraga.ForeColor = System.Drawing.Color.White;
-            this.lblPretraga.Location = new System.Drawing.Point(166, 269);
+            this.lblPretraga.Location = new System.Drawing.Point(136, 269);
             this.lblPretraga.Name = "lblPretraga";
             this.lblPretraga.Size = new System.Drawing.Size(64, 17);
             this.lblPretraga.TabIndex = 21;
@@ -175,7 +175,7 @@
             // 
             // txtPretraga
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(111, 289);
+            this.txtPretraga.Location = new System.Drawing.Point(81, 289);
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(119, 23);
             this.txtPretraga.TabIndex = 22;
@@ -225,6 +225,6 @@
         public System.Windows.Forms.Button btnIzmeni;
         public System.Windows.Forms.Button btnObrisi;
         public System.Windows.Forms.Label lblPretraga;
-        private System.Windows.Forms.TextBox txtPretraga;
+        public System.Windows.Forms.TextBox txtPretraga;
     }
 }

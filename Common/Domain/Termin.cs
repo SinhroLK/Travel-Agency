@@ -28,6 +28,8 @@ namespace Common.Domain
 
         public string zaSet => throw new NotImplementedException();
 
+        public string Mesto => Aranzman.Mesto.ToString();
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();
