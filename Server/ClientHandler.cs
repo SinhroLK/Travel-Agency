@@ -115,6 +115,20 @@ namespace Server
                             throw new Exception();
                         }
                         break;
+                    case Operation.ObrisiTermin:
+                        r.Odgovor = Controller.Instance.ObrisiTermin((Termin)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
+                    case Operation.IzmeniTermin:
+                        r.Odgovor = Controller.Instance.IzmeniTermin((Termin)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
                     default:
                         break;
                 }

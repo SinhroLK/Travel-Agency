@@ -64,8 +64,10 @@
     <Compile Include="SystemOperation\DodajTerminSO.cs" />
     <Compile Include="SystemOperation\DodajVodicaSO.cs" />
     <Compile Include="SystemOperation\IzmeniAranzmanSO.cs" />
+    <Compile Include="SystemOperation\IzmeniTerminSO.cs" />
     <Compile Include="SystemOperation\LoginSO.cs" />
     <Compile Include="SystemOperation\ObrisiAranzmanSO.cs" />
+    <Compile Include="SystemOperation\ObrisiTerminSO.cs" />
     <Compile Include="SystemOperation\ObrisiVodicaSO.cs" />
     <Compile Include="SystemOperation\SystemOperationBase.cs" />
     <Compile Include="SystemOperation\VratiAranzmaneSO.cs" />

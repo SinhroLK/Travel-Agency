@@ -112,5 +112,19 @@ namespace Server
             dodajTermin.ExecuteTemplate();
             return dodajTermin.Result;
         }
+
+        internal object ObrisiTermin(Termin argument)
+        {
+            ObrisiTerminSO obrisiTermin= new ObrisiTerminSO(argument);
+            obrisiTermin.ExecuteTemplate();
+            return obrisiTermin.Result;
+        }
+
+        internal object IzmeniTermin(Termin argument)
+        {
+            IzmeniTerminSO izmeniTermin = new IzmeniTerminSO(argument);
+            izmeniTermin.ExecuteTemplate();
+            return izmeniTermin.Result;
+        }
     }
 }

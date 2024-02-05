@@ -26,7 +26,7 @@ namespace Common.Domain
 
         public string zaJoin => "join Aranzman on (Termin.aranzman_id=Aranzman.aranzman_id) join Vodic on (Termin.vodic_id = vodic.vodic_id) join Mesto on (Aranzman.mesto_id = Mesto.mesto_id)";
 
-        public string zaSet => throw new NotImplementedException();
+        public string zaSet => $"aranzman_id = {Aranzman.AranzmanId}, vodic_id = {Vodic.VodicId}, datum_od = '{DatumOd.ToString("yyyyMMdd")}', datum_do = '{DatumDo.ToString("yyyyMMdd")}'";
 
         public string Mesto => Aranzman.Mesto.ToString();
 

@@ -195,5 +195,29 @@ namespace Client
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal Response ObrisiTermin(Termin termin)
+        {
+            Request request = new Request
+            {
+                Argument = termin,
+                Operation = Operation.ObrisiTermin
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response IzmeniTermin(Termin termin)
+        {
+            Request request = new Request
+            {
+                Argument = termin,
+                Operation = Operation.IzmeniTermin
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }

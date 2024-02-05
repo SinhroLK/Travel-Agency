@@ -21,6 +21,8 @@ namespace Common.Communication
         ObrisiAranzman,
         IzmeniAranzman,
         VratiTermine,
-        KreirajTermin
+        KreirajTermin,
+        ObrisiTermin,
+        IzmeniTermin
     }
 }
