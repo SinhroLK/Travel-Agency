@@ -170,5 +170,30 @@ namespace Client
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal object VratiTermine(Termin termin)
+        {
+            Request request = new Request
+            {
+                Argument = termin,
+                Operation = Operation.VratiTermine
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            // Console.WriteLine(response.Odgovor);
+            return response.Odgovor;
+        }
+
+        internal Response KreirajTermin(Termin termin)
+        {
+            Request request = new Request
+            {
+                Argument = termin,
+                Operation = Operation.KreirajTermin
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }

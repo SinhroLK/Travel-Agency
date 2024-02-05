@@ -50,6 +50,8 @@ namespace Client.UserControls
                 dgvAranzmani.Columns["Values"].Visible = false;
                 dgvAranzmani.Columns["Id"].Visible = false;
                 dgvAranzmani.Columns["IdColumnName"].Visible = false;
+                dgvAranzmani.Columns["zaJoin"].Visible = false;
+                dgvAranzmani.Columns["zaSet"].Visible = false;
             }
         }
     }

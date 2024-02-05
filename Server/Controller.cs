@@ -98,5 +98,19 @@ namespace Server
             izmeniAranzman.ExecuteTemplate();
             return izmeniAranzman.Result;
         }
+
+        internal object VratiTermine(Termin argument)
+        {
+            VratiTermineSO vratiTermine = new VratiTermineSO(argument);
+            vratiTermine.ExecuteTemplate();
+            return vratiTermine.Result;
+        }
+
+        internal object KreirajTermin(Termin argument)
+        {
+            DodajTerminSO dodajTermin= new DodajTerminSO(argument);
+            dodajTermin.ExecuteTemplate();
+            return dodajTermin.Result;
+        }
     }
 }

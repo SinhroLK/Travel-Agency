@@ -63,6 +63,7 @@
     <Compile Include="GuiController\LoginGuiController.cs" />
     <Compile Include="GuiController\MainCoordinator.cs" />
     <Compile Include="GuiController\MestoGuiController.cs" />
+    <Compile Include="GuiController\TerminGuiController.cs" />
     <Compile Include="GuiController\VodicGuiController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,11 +73,17 @@
     <Compile Include="UserControls\UCAranzman.Designer.cs">
       <DependentUpon>UCAranzman.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCDodajMesto.cs">
+    <Compile Include="UserControls\UCMesto.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCDodajMesto.Designer.cs">
-      <DependentUpon>UCDodajMesto.cs</DependentUpon>
+    <Compile Include="UserControls\UCMesto.Designer.cs">
+      <DependentUpon>UCMesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCTermin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCTermin.Designer.cs">
+      <DependentUpon>UCTermin.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCVodic.cs">
       <SubType>UserControl</SubType>
@@ -97,8 +104,11 @@
     <EmbeddedResource Include="UserControls\UCAranzman.resx">
       <DependentUpon>UCAranzman.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCDodajMesto.resx">
-      <DependentUpon>UCDodajMesto.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UCMesto.resx">
+      <DependentUpon>UCMesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCTermin.resx">
+      <DependentUpon>UCTermin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCVodic.resx">
       <DependentUpon>UCVodic.cs</DependentUpon>

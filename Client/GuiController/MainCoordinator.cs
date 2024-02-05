@@ -32,11 +32,13 @@ namespace Client.GuiController
             mestoGuiController = new MestoGuiController();
             vodicGuiController = new VodicGuiController();
             aranzmanGuiController = new AranzmanGuiController();
+            terminGuiController = new TerminGuiController();
         }
         private FrmMain frmMain;
         private MestoGuiController mestoGuiController;
         private VodicGuiController vodicGuiController;
         private AranzmanGuiController aranzmanGuiController;
+        private TerminGuiController terminGuiController;
         internal void ShowFrmMain(string ime, string prezime)
         {
             frmMain = new FrmMain();
@@ -195,6 +197,11 @@ namespace Client.GuiController
         internal void DodajAranzman(object sender, EventArgs e)
         {
             frmMain.ChangePanel(aranzmanGuiController.KreirajDodajAranzman());
+        }
+
+        internal void DodajTermin(object sender, EventArgs e)
+        {
+            frmMain.ChangePanel(terminGuiController.KreirajDodajTermin());
         }
     }
 }

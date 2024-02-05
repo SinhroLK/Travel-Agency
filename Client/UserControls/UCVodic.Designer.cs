@@ -52,6 +52,7 @@
             this.dgvVodici.Location = new System.Drawing.Point(28, 311);
             this.dgvVodici.MultiSelect = false;
             this.dgvVodici.Name = "dgvVodici";
+            this.dgvVodici.ReadOnly = true;
             this.dgvVodici.RowHeadersWidth = 51;
             this.dgvVodici.RowTemplate.Height = 24;
             this.dgvVodici.Size = new System.Drawing.Size(566, 159);

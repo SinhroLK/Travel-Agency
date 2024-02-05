@@ -44,6 +44,8 @@ namespace Client.UserControls
             dgvMesta.Columns["Values"].Visible = false;
             dgvMesta.Columns["Id"].Visible = false;
             dgvMesta.Columns["IdColumnName"].Visible = false;
+            dgvMesta.Columns["zaJoin"].Visible = false;
+            dgvMesta.Columns["zaSet"].Visible = false;
         }
     }
 }

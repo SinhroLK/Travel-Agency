@@ -118,6 +118,7 @@
             this.dgvMesta.Location = new System.Drawing.Point(383, 21);
             this.dgvMesta.MultiSelect = false;
             this.dgvMesta.Name = "dgvMesta";
+            this.dgvMesta.ReadOnly = true;
             this.dgvMesta.RowHeadersWidth = 51;
             this.dgvMesta.RowTemplate.Height = 24;
             this.dgvMesta.Size = new System.Drawing.Size(348, 465);
@@ -172,7 +173,7 @@
             this.lblComboMesta.TabIndex = 12;
             this.lblComboMesta.Text = "Mesta";
             // 
-            // UCDodajMesto
+            // UCMesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -192,7 +193,7 @@
             this.Controls.Add(this.txtNazivMesta);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
-            this.Name = "UCDodajMesto";
+            this.Name = "UCMesto";
             this.Size = new System.Drawing.Size(747, 517);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMesta)).EndInit();
             this.ResumeLayout(false);

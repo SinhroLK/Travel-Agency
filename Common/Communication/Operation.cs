@@ -19,6 +19,8 @@ namespace Common.Communication
         KreirajAranzman,
         VratiAranzmane,
         ObrisiAranzman,
-        IzmeniAranzman
+        IzmeniAranzman,
+        VratiTermine,
+        KreirajTermin
     }
 }

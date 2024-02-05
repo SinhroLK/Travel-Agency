@@ -105,6 +105,16 @@ namespace Server
                             throw new Exception();
                         }
                         break;
+                    case Operation.VratiTermine:
+                        r.Odgovor = Controller.Instance.VratiTermine((Termin)req.Argument);
+                        break;
+                    case Operation.KreirajTermin:
+                        r.Odgovor = Controller.Instance.KreirajTermin((Termin)req.Argument);
+                        if (r.Odgovor == null)
+                        {
+                            throw new Exception();
+                        }
+                        break;
                     default:
                         break;
                 }

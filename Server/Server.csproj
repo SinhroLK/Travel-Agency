@@ -61,6 +61,7 @@
     <Compile Include="SystemOperation\DodajAranzmanSO.cs" />
     <Compile Include="SystemOperation\DodajMestoSO.cs" />
     <Compile Include="SystemOperation\DodajSadrzajSO.cs" />
+    <Compile Include="SystemOperation\DodajTerminSO.cs" />
     <Compile Include="SystemOperation\DodajVodicaSO.cs" />
     <Compile Include="SystemOperation\IzmeniAranzmanSO.cs" />
     <Compile Include="SystemOperation\LoginSO.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="SystemOperation\SystemOperationBase.cs" />
     <Compile Include="SystemOperation\VratiAranzmaneSO.cs" />
     <Compile Include="SystemOperation\VratiMestaSO.cs" />
+    <Compile Include="SystemOperation\VratiTermineSO.cs" />
     <Compile Include="SystemOperation\VratiVodiceSO.cs" />
     <EmbeddedResource Include="FrmServer.resx">
       <DependentUpon>FrmServer.cs</DependentUpon>

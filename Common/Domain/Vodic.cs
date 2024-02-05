@@ -27,6 +27,11 @@ namespace Common.Domain
 
         public string zaSet => "";
 
+        public override string ToString()
+        {
+            return Ime;
+        }
+
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
             List<IEntity> lista = new List<IEntity>();

@@ -44,6 +44,7 @@ namespace Client
             btnMesto.Click += MainCoordinator.Instance.DodajMesto;
             btnVodic.Click += MainCoordinator.Instance.DodajVodica;
             btnAranzman.Click += MainCoordinator.Instance.DodajAranzman;
+            btnTermin.Click += MainCoordinator.Instance.DodajTermin;
         }
 
         internal void ChangePanel(Control control)

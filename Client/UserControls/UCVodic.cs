@@ -42,6 +42,9 @@ namespace Client.UserControls
                 dgvVodici.Columns["Values"].Visible = false;
                 dgvVodici.Columns["Id"].Visible = false;
                 dgvVodici.Columns["IdColumnName"].Visible = false;
+                dgvVodici.Columns["zaJoin"].Visible = false;
+                dgvVodici.Columns["zaSet"].Visible = false;
+
             } 
         }
         //private void txtPretraga_TextChanged(object sender, EventArgs e)
