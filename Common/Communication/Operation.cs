@@ -23,6 +23,7 @@ namespace Common.Communication
         VratiTermine,
         KreirajTermin,
         ObrisiTermin,
-        IzmeniTermin
+        IzmeniTermin,
+        Logout
     }
 }

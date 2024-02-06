@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Client
 {
@@ -257,6 +258,16 @@ namespace Client
             Response response = (Response)receiver.Receive();
             return response;
         }
+        internal void Logout()
+        {
+            Request request = new Request
+            {
+                Argument = null,
+                Operation = Operation.Logout
+            };
+            sender.Send(request);
+            Close();
+        }
 
         internal void Close()
         {
@@ -264,5 +275,6 @@ namespace Client
             socket?.Close();
             socket = null;
         }
+
     }
 }

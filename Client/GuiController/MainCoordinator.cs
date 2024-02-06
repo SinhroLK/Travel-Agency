@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Communication;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -202,6 +203,22 @@ namespace Client.GuiController
         internal void DodajTermin(object sender, EventArgs e)
         {
             frmMain.ChangePanel(terminGuiController.KreirajDodajTermin());
+        }
+
+        internal void AdminLogout(object sender, EventArgs e)
+        {
+            Communication.Instance.Logout();
+            MessageBox.Show("Dovidjorno");
+            frmMain.Close();
+            return;
+        }
+
+        internal void FormClose(object sender, FormClosedEventArgs e)
+        {
+            Communication.Instance.Logout();
+            //MessageBox.Show("Dovidjorno");
+            Environment.Exit(0);
+            return;
         }
     }
 }

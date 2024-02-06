@@ -15,6 +15,7 @@ namespace Server
         private Sender sender;
         private Receiver receiver;
         private Socket socket;
+        public string username;
 
         public ClientHandler(Socket socket)
         {
@@ -47,7 +48,7 @@ namespace Server
             }
             catch (Exception se)
             {
-                Debug.WriteLine(">>>Ugasio sam nesto" + se.Message);
+                Debug.WriteLine(">>>Ugasio sam server" + se.Message);
             }
         }
 
@@ -63,6 +64,11 @@ namespace Server
                         if (r.Odgovor == null)
                         {
                             throw new Exception();
+                        }
+                        else
+                        {
+                            Admin a = r.Odgovor as Admin;
+                            username = a.KorisnickoIme; 
                         }
                         break;
                     case Operation.VratiMesta:
@@ -147,9 +153,19 @@ namespace Server
                             throw new Exception();
                         }
                         break;
+                    case Operation.Logout:
+                        Server.klijenti.Remove(this);
+                        Close();
+                        Debug.WriteLine(">>>>>>>>>>>>>>>>Klijent ode");
+                        break;
                     default:
                         break;
                 } 
+            }
+            catch (NullReferenceException e)
+            {
+                r.Exception = e;
+                Debug.WriteLine(e.Message);
             }
             catch (Exception e)
             {

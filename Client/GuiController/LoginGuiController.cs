@@ -118,7 +118,7 @@ namespace Client.GuiController
             }
             else
             {
-                MessageBox.Show("Netačno korisničko ime ili lozinka. Pokušajte ponovo");
+                MessageBox.Show("Netačno korisničko ime ili lozinka ili je korisnik već ulogovan. Pokušajte ponovo");
             }
         }
     }

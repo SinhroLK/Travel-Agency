@@ -43,7 +43,7 @@ namespace Client.GuiController
                     if (response == null)
                     {
                         MessageBox.Show("Doslo je do greske na serveru");
-                        MainCoordinator.Instance.frmMain.Close();
+                        Environment.Exit(0);
                         Communication.Instance.Close();
                         return;
                     }

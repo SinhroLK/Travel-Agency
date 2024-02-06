@@ -45,6 +45,8 @@ namespace Client
             btnVodic.Click += MainCoordinator.Instance.DodajVodica;
             btnAranzman.Click += MainCoordinator.Instance.DodajAranzman;
             btnTermin.Click += MainCoordinator.Instance.DodajTermin;
+            btnLogout.Click += MainCoordinator.Instance.AdminLogout;
+            this.FormClosed += MainCoordinator.Instance.FormClose;
         }
 
         internal void ChangePanel(Control control)

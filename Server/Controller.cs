@@ -26,9 +26,22 @@ namespace Server
 
         internal object Login(Admin admin)
         {
-            LoginSO so = new LoginSO(admin);
-            so.ExecuteTemplate();
-            return so.Result;
+            bool postoji = false;
+            foreach (ClientHandler client in Server.klijenti)
+            {
+                if (admin.KorisnickoIme == client.username)
+                {
+                    postoji = true;
+                    break;
+                }
+            }
+            if (!postoji)
+            {
+                LoginSO so = new LoginSO(admin);
+                so.ExecuteTemplate();
+                return so.Result;
+            }
+            return null;
         }
         internal List<Mesto> VratiMesta(Mesto mesto)
         {

@@ -28,7 +28,8 @@ namespace Client.UserControls
             {
                 timer.Stop();
                 MessageBox.Show("Doslo je do greske na serveru");
-                MainCoordinator.Instance.frmMain.Close();
+                MainCoordinator.Instance.frmMain.Dispose();
+                Environment.Exit(0);
                 Communication.Instance.Close();
                 return;
             }
@@ -68,7 +69,8 @@ namespace Client.UserControls
                 {
                     timer.Stop();
                     MessageBox.Show("Doslo je do greske na serveru");
-                    MainCoordinator.Instance.frmMain.Close();
+                    MainCoordinator.Instance.frmMain.Dispose();
+                    Environment.Exit(0);
                     Communication.Instance.Close();
                     return;
                 }
