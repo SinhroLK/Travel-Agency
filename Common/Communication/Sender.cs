@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -23,7 +24,13 @@ namespace Common.Communication
 
         public void Send(object argument)
         {
-            _formatter.Serialize(_stream, argument);
+            try
+            {
+                _formatter.Serialize(_stream, argument);
+            }catch (Exception ex)
+            {
+                Debug.WriteLine(">>>", ex.Message);
+            }
         }
     }
 }

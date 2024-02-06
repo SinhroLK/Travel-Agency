@@ -14,6 +14,7 @@ namespace Server
     public class Server
     {
         Socket socket;
+        public static List<ClientHandler> klijenti = new List<ClientHandler> ();
 
         public Server()
         {
@@ -41,6 +42,7 @@ namespace Server
                 {
                     Socket klijentskiSoket = socket.Accept();
                     ClientHandler handler = new ClientHandler(klijentskiSoket);
+                    klijenti.Add(handler);
                     Thread klijentskaNit = new Thread(handler.HandleRequest);
                     klijentskaNit.Start();
                 }
@@ -55,6 +57,11 @@ namespace Server
         public void Stop()
         {
             socket.Close();
+            foreach (ClientHandler handler in klijenti)
+            {
+                handler.Close();
+            }
+            klijenti.Clear();
         }
     }
 }

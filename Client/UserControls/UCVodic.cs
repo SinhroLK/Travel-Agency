@@ -1,4 +1,5 @@
-﻿using Common.Domain;
+﻿using Client.GuiController;
+using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,14 @@ namespace Client.UserControls
             {
                 Vodic vodic = new Vodic();
                 List<Vodic> listaVodica = (List<Vodic>)Communication.Instance.VratiVodice(vodic);
+                if (listaVodica == null)
+                {
+                    timer.Stop();
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
                 vodici = new BindingList<Vodic>(listaVodica);
                 filterVodici = new BindingList<Vodic>(listaVodica);
                 dgvVodici.DataSource = vodici;

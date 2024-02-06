@@ -32,6 +32,13 @@ namespace Client.GuiController
                 Vodic vodic = ucVodic.dgvVodici.Rows[rowIndex].DataBoundItem as Vodic;
                 //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
                 Response response = Communication.Instance.ObrisiVodica(vodic);
+                if (response == null)
+                {
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
                 if (response.Exception == null)
                 {
                     MessageBox.Show("Uspesno ste obrisali vodica");
@@ -55,6 +62,13 @@ namespace Client.GuiController
             string filter = ucVodic.txtPretraga.Text;
             Vodic vodic = new Vodic();
             List<Vodic> listaVodica = (List<Vodic>)Communication.Instance.VratiVodice(vodic);
+            if (listaVodica == null)
+            {
+                MainCoordinator.Instance.frmMain.Close();
+                Communication.Instance.Close();
+                MessageBox.Show("Doslo je do greske na serveru");
+                return;
+            }
             ucVodic.vodici = new BindingList<Vodic>(listaVodica);
             List<Vodic> tempVodic = new List<Vodic>();
             foreach (Vodic v in ucVodic.vodici)
@@ -94,6 +108,13 @@ namespace Client.GuiController
                         DatumIstekaUgovora = ucVodic.mcDatumIsteka.SelectionStart
                     };
                     Response response = Communication.Instance.KreirajVodica(vodic);
+                    if (response == null)
+                    {
+                        MessageBox.Show("Doslo je do greske na serveru");
+                        MainCoordinator.Instance.frmMain.Close();
+                        Communication.Instance.Close();
+                        return;
+                    }
                     if (response.Exception == null)
                     {
                         MessageBox.Show("Uspesno ste dodali vodica!");

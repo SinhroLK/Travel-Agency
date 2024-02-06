@@ -34,7 +34,7 @@ namespace Client.GuiController
             aranzmanGuiController = new AranzmanGuiController();
             terminGuiController = new TerminGuiController();
         }
-        private FrmMain frmMain;
+        public FrmMain frmMain;
         private MestoGuiController mestoGuiController;
         private VodicGuiController vodicGuiController;
         private AranzmanGuiController aranzmanGuiController;

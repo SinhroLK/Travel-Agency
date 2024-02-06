@@ -41,6 +41,13 @@ namespace Client.GuiController
                 terminZaIzmenu.DatumDo = ucTermin.mcDatumDo.SelectionStart;
 
                 Response response = Communication.Instance.IzmeniTermin(terminZaIzmenu);
+                if (response == null)
+                {
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
                 if (response.Exception == null)
                 {
                     MessageBox.Show("Uspesno ste izmenili termin!");
@@ -92,6 +99,13 @@ namespace Client.GuiController
                 int rowIndex = ucTermin.dgvTermini.SelectedCells[0].RowIndex;
                 Termin termin= ucTermin.dgvTermini.Rows[rowIndex].DataBoundItem as Termin;
                 Response response = Communication.Instance.ObrisiTermin(termin);
+                if (response == null)
+                {
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
                 if (response.Exception == null)
                 {
                     MessageBox.Show("Uspesno ste obrisali termin");
@@ -128,6 +142,13 @@ namespace Client.GuiController
                     DatumDo = ucTermin.mcDatumDo.SelectionStart
                 };
                 Response response = Communication.Instance.KreirajTermin(termin);
+                if (response == null)
+                {
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
                 if (response.Exception == null)
                 {
                     MessageBox.Show("Uspesno ste dodali termin!");
@@ -154,6 +175,13 @@ namespace Client.GuiController
             string filter = ucTermin.txtPretraga.Text;
             Termin termin = new Termin();
             List<Termin> listaTermina = (List<Termin>)Communication.Instance.VratiTermine(termin);
+            if (listaTermina == null)
+            {
+                MainCoordinator.Instance.frmMain.Close();
+                Communication.Instance.Close();
+                MessageBox.Show("Doslo je do greske na serveru");
+                return;
+            }
             ucTermin.termini = new BindingList<Termin>(listaTermina);
 
             List<Termin> tempTermin = new List<Termin>();

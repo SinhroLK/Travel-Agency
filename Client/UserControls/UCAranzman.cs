@@ -1,4 +1,5 @@
-﻿using Common.Domain;
+﻿using Client.GuiController;
+using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,13 @@ namespace Client.UserControls
             InitializeTimer();
             Mesto mesto = new Mesto();
             List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
+            if (listaMesta == null)
+            {
+                MessageBox.Show("Doslo je do greske na serveru");
+                MainCoordinator.Instance.frmMain.Close();
+                Communication.Instance.Close();
+                return;
+            }
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
             cbMesta.DataSource = mesta;
             cbMesta.DisplayMember = "NazivMesta";
@@ -42,6 +50,14 @@ namespace Client.UserControls
             {
                 Aranzman aranzman = new Aranzman();
                 List<Aranzman> listaAranzmana = (List<Aranzman>)Communication.Instance.VratiAranzmane(aranzman);
+                if (listaAranzmana == null)
+                {
+                    timer.Stop();
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
                 aranzmani = new BindingList<Aranzman>(listaAranzmana);
                 filterAranzmani = new BindingList<Aranzman>(listaAranzmana);
                 dgvAranzmani.DataSource = aranzmani;

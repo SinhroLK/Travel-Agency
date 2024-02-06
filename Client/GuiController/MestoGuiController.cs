@@ -35,7 +35,14 @@ namespace Client.GuiController
                     Opis = dodajMesto.txtSadrzaj.Text
                 };
                 Response response = Communication.Instance.KreirajSadrzaj(sadrzaj);
-                if(response.Exception == null)
+                if (response == null)
+                {
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
+                if (response.Exception == null)
                 {
                     MessageBox.Show($"Uspesno ste dodali sadrzaj za {mesto.NazivMesta}");
                     dodajMesto.txtSadrzaj.Text = "";
@@ -65,6 +72,13 @@ namespace Client.GuiController
                         BrojStanovnika = int.Parse(dodajMesto.txtBrojStanovnika.Text)
                     };
                     Response response = Communication.Instance.KreirajMesto(mesto);
+                    if (response == null)
+                    {
+                        MessageBox.Show("Doslo je do greske na serveru");
+                        MainCoordinator.Instance.frmMain.Close();
+                        Communication.Instance.Close();
+                        return;
+                    }
                     if (response.Exception == null)
                     {
                         MessageBox.Show("Uspesno ste dodali mesto!");

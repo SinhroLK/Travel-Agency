@@ -1,4 +1,5 @@
-﻿using Common.Domain;
+﻿using Client.GuiController;
+using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,10 +21,17 @@ namespace Client.UserControls
             InitializeTimer();
             Mesto mesto = new Mesto();
             List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
+            if (listaMesta == null)
+            {
+                MainCoordinator.Instance.frmMain.Close();
+                Communication.Instance.Close();
+                MessageBox.Show("Doslo je do greske na serveru");
+                return;
+            }
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
+            cbMesta.SelectedItem = null;
             cbMesta.DataSource = mesta;
             cbMesta.DisplayMember = "NazivMesta";
-            cbMesta.SelectedItem = null;;
         }
 
         public void InitializeTimer()
@@ -37,6 +45,14 @@ namespace Client.UserControls
         {
             Mesto mesto = new Mesto();
             List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
+            if (listaMesta == null)
+            {
+                timer.Stop();
+                MessageBox.Show("Doslo je do greske na serveru");
+                MainCoordinator.Instance.frmMain.Close();
+                Communication.Instance.Close();
+                return;
+            }
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
             dgvMesta.DataSource = mesta;
             dgvMesta.Columns["MestoId"].Visible = false;
@@ -45,7 +61,7 @@ namespace Client.UserControls
             dgvMesta.Columns["Id"].Visible = false;
             dgvMesta.Columns["IdColumnName"].Visible = false;
             dgvMesta.Columns["zaJoin"].Visible = false;
-            dgvMesta.Columns["zaSet"].Visible = false;
+            dgvMesta.Columns["zaSet"].Visible = false;   
         }
     }
 }

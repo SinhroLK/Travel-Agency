@@ -3,6 +3,7 @@ using Common.Communication;
 using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -29,28 +30,45 @@ namespace Client
         Sender sender;
         Receiver receiver;
 
-        public void Connect()
+        public bool Connect()
         {
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect("127.0.0.1", 9999);
-            sender = new Sender(socket);
-            receiver = new Receiver(socket);
+            try
+            {
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.Connect("127.0.0.1", 9999);
+                sender = new Sender(socket);
+                receiver = new Receiver(socket);
+                return true;
+            }
+            catch (SocketException se)
+            {
+                Debug.WriteLine(">>>nije upaljen server>>>" + se.ToString());
+                return false;
+            }
         }
 
         internal Response Login(Admin user)
         {
-            Request req = new Request
+            try
             {
-                Argument = user,
-                Operation = Operation.Login
-            };
-            sender.Send(req);
-            Response response = (Response)receiver.Receive();
-            return response;
+                Request req = new Request
+                {
+                    Argument = user,
+                    Operation = Operation.Login
+                };
+                sender.Send(req);
+                Response response = (Response)receiver.Receive();
+                return response;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         internal object VratiMesta(Mesto mesto)
         {
+
             Request request = new Request
             {
                 Argument = mesto,
@@ -58,6 +76,10 @@ namespace Client
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
+            if(response == null)
+            {
+                return response;
+            }
             //Console.WriteLine(response.Odgovor);
             return response.Odgovor;
         }
@@ -71,6 +93,10 @@ namespace Client
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
+            //if (response == null)
+            //{
+            //    return response;
+            //}
             return response;
         }
 
@@ -83,6 +109,10 @@ namespace Client
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
+            if (response == null)
+            {
+                return response;
+            }
             // Console.WriteLine(response.Odgovor);
             return response.Odgovor;
         }
@@ -131,6 +161,10 @@ namespace Client
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
+            if (response == null)
+            {
+                return response;
+            }
             // Console.WriteLine(response.Odgovor);
             return response.Odgovor;
         }
@@ -180,6 +214,10 @@ namespace Client
             };
             sender.Send(request);
             Response response = (Response)receiver.Receive();
+            if (response == null)
+            {
+                return response;
+            }
             // Console.WriteLine(response.Odgovor);
             return response.Odgovor;
         }
@@ -218,6 +256,13 @@ namespace Client
             sender.Send(request);
             Response response = (Response)receiver.Receive();
             return response;
+        }
+
+        internal void Close()
+        {
+            socket?.Shutdown(SocketShutdown.Both);
+            socket?.Close();
+            socket = null;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Common.Domain;
+﻿using Client.GuiController;
+using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,14 +22,30 @@ namespace Client.UserControls
             InitializeComponent();
             btnIzmeni.Enabled = false;
             InitializeTimer();
-            Aranzman aranzman= new Aranzman();
+            Aranzman aranzman = new Aranzman();
             List<Aranzman> listaAranzmana = (List<Aranzman>)Communication.Instance.VratiAranzmane(aranzman);
+            if (listaAranzmana == null)
+            {
+                timer.Stop();
+                MessageBox.Show("Doslo je do greske na serveru");
+                MainCoordinator.Instance.frmMain.Close();
+                Communication.Instance.Close();
+                return;
+            }
             BindingList<Aranzman> aranzmani = new BindingList<Aranzman>(listaAranzmana);
             cbAranzman.DataSource = aranzmani;
             cbAranzman.DisplayMember = "ImeAranzmana";
             cbAranzman.SelectedItem = null;
             Vodic vodic = new Vodic();
-            List<Vodic> listaVodica= (List<Vodic>)Communication.Instance.VratiVodice(vodic);
+            List<Vodic> listaVodica = (List<Vodic>)Communication.Instance.VratiVodice(vodic);
+            if (listaVodica == null)
+            {
+                timer.Stop();
+                MessageBox.Show("Doslo je do greske na serveru");
+                MainCoordinator.Instance.frmMain.Close();
+                Communication.Instance.Close();
+                return;
+            }
             BindingList<Vodic> vodici = new BindingList<Vodic>(listaVodica);
             cbVodic.DataSource = vodici;
             cbVodic.DisplayMember = "Ime";
@@ -47,6 +64,14 @@ namespace Client.UserControls
             {
                 Termin termin = new Termin();
                 List<Termin> listaTermina = (List<Termin>)Communication.Instance.VratiTermine(termin);
+                if (listaTermina == null)
+                {
+                    timer.Stop();
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
                 termini = new BindingList<Termin>(listaTermina);
                 filterTermini = new BindingList<Termin>(listaTermina);
                 dgvTermini.DataSource = termini;
@@ -57,7 +82,7 @@ namespace Client.UserControls
                 dgvTermini.Columns["IdColumnName"].Visible = false;
                 dgvTermini.Columns["zaJoin"].Visible = false;
                 dgvTermini.Columns["zaSet"].Visible = false;
-                
+
             }
         }
     }

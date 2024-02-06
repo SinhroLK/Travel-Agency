@@ -23,13 +23,31 @@ namespace Server
             receiver = new Receiver(socket);
         }
 
+        internal void Close()
+        {
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
+            socket = null;
+        }
+
         internal void HandleRequest()
         {
-            while (true)
+            try
             {
-                Request req = (Request)receiver.Receive();
-                Response r = ProcessRequest(req);
-                sender.Send(r);
+                while (true)
+                {
+                    Request req = (Request)receiver.Receive();
+                    if(req == null)
+                    {
+                        throw new Exception();
+                    }
+                    Response r = ProcessRequest(req);
+                    sender.Send(r);
+                }
+            }
+            catch (Exception se)
+            {
+                Debug.WriteLine(">>>Ugasio sam nesto" + se.Message);
             }
         }
 
@@ -69,7 +87,7 @@ namespace Server
                         break;
                     case Operation.ObrisiVodica:
                         r.Odgovor = Controller.Instance.ObrisiVodica((Vodic)req.Argument);
-                        if(r.Odgovor == null)
+                        if (r.Odgovor == null)
                         {
                             throw new Exception();
                         }
@@ -131,7 +149,7 @@ namespace Server
                         break;
                     default:
                         break;
-                }
+                } 
             }
             catch (Exception e)
             {

@@ -40,6 +40,13 @@ namespace Client.GuiController
                     aranzmanZaIzmenu.Opis = ucAranzman.txtOpis.Text;
                     aranzmanZaIzmenu.Mesto = mesto;
                     Response response = Communication.Instance.IzmeniAranzman(aranzmanZaIzmenu);
+                    if (response == null)
+                    {
+                        MessageBox.Show("Doslo je do greske na serveru");
+                        MainCoordinator.Instance.frmMain.Close();
+                        Communication.Instance.Close();
+                        return;
+                    }
                     if (response.Exception == null)
                     {
                         MessageBox.Show("Uspesno ste izmenili aranzman!");
@@ -94,6 +101,13 @@ namespace Client.GuiController
                 Aranzman aranzman = ucAranzman.dgvAranzmani.Rows[rowIndex].DataBoundItem as Aranzman;
                 //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
                 Response response = Communication.Instance.ObrisiAranzman(aranzman);
+                if (response == null)
+                {
+                    MessageBox.Show("Doslo je do greske na serveru");
+                    MainCoordinator.Instance.frmMain.Close();
+                    Communication.Instance.Close();
+                    return;
+                }
                 if (response.Exception == null)
                 {
                     MessageBox.Show("Uspesno ste obrisali aranzman");
@@ -131,6 +145,13 @@ namespace Client.GuiController
                         Mesto = mesto
                     };
                     Response response = Communication.Instance.KreirajAranzman(aranzman);
+                    if (response == null)
+                    {
+                        MessageBox.Show("Doslo je do greske na serveru");
+                        MainCoordinator.Instance.frmMain.Close();
+                        Communication.Instance.Close();
+                        return;
+                    }
                     if (response.Exception == null)
                     {
                         MessageBox.Show("Uspesno ste dodali aranzman!");
@@ -162,6 +183,13 @@ namespace Client.GuiController
             string filter = ucAranzman.txtPretraga.Text;
             Aranzman aranzman = new Aranzman();
             List<Aranzman> listaAranzmana = (List<Aranzman>)Communication.Instance.VratiAranzmane(aranzman);
+            if (listaAranzmana == null)
+            {
+                MainCoordinator.Instance.frmMain.Close();
+                Communication.Instance.Close();
+                MessageBox.Show("Doslo je do greske na serveru");
+                return;
+            }
             ucAranzman.aranzmani = new BindingList<Aranzman>(listaAranzmana);
             List<Aranzman> tempAranzman = new List<Aranzman>();
             foreach (Aranzman a in ucAranzman.aranzmani)

@@ -35,14 +35,20 @@ namespace Client.GuiController
 
         internal void ShowFrmLogin()
         {
-            Communication.Instance.Connect();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            frmLogin = new FrmLogin();
-            frmLogin.AutoSize = true;
-            Application.Run(frmLogin);
+            if (Communication.Instance.Connect())
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                frmLogin = new FrmLogin();
+                frmLogin.AutoSize = true;
+                Application.Run(frmLogin);
+            }
+            else
+            {
+                MessageBox.Show("Nije moguce povezivanje sa serverom");
+            }
         }
-        #region windows manipulation
+        #region window manipulation
         internal void UgasiFormu(object sender, EventArgs e)
         {
             frmLogin.Close();
@@ -96,6 +102,13 @@ namespace Client.GuiController
                 Lozinka = frmLogin.txtPassword.Text,
             };
             Response response = Communication.Instance.Login(user);
+            if (response == null)
+            {
+                MessageBox.Show("Doslo je do greske na serveru");
+                frmLogin.Close();
+                Communication.Instance.Close();
+                return;
+            }
             if (response.Exception == null)
             {
                 MessageBox.Show("Uspesna prijava");
