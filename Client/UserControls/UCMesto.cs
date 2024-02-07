@@ -23,6 +23,7 @@ namespace Client.UserControls
             List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(mesto);
             if (listaMesta == null)
             {
+                timer.Stop();
                 MainCoordinator.Instance.frmMain.Close();
                 Communication.Instance.Close();
                 MessageBox.Show("Doslo je do greske na serveru");

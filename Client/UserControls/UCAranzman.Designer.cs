@@ -62,7 +62,7 @@
             // 
             // txtOpis
             // 
-            this.txtOpis.Location = new System.Drawing.Point(74, 108);
+            this.txtOpis.Location = new System.Drawing.Point(74, 99);
             this.txtOpis.Multiline = true;
             this.txtOpis.Name = "txtOpis";
             this.txtOpis.Size = new System.Drawing.Size(176, 145);
@@ -95,7 +95,7 @@
             this.lblOpis.AutoSize = true;
             this.lblOpis.Font = new System.Drawing.Font("Century Gothic", 10.2F);
             this.lblOpis.ForeColor = System.Drawing.Color.White;
-            this.lblOpis.Location = new System.Drawing.Point(29, 107);
+            this.lblOpis.Location = new System.Drawing.Point(29, 98);
             this.lblOpis.Name = "lblOpis";
             this.lblOpis.Size = new System.Drawing.Size(47, 21);
             this.lblOpis.TabIndex = 5;
@@ -110,7 +110,7 @@
             this.dgvAranzmani.ReadOnly = true;
             this.dgvAranzmani.RowHeadersWidth = 51;
             this.dgvAranzmani.RowTemplate.Height = 24;
-            this.dgvAranzmani.Size = new System.Drawing.Size(432, 451);
+            this.dgvAranzmani.Size = new System.Drawing.Size(432, 239);
             this.dgvAranzmani.TabIndex = 8;
             // 
             // lblComboMesta
@@ -118,7 +118,7 @@
             this.lblComboMesta.AutoSize = true;
             this.lblComboMesta.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComboMesta.ForeColor = System.Drawing.Color.White;
-            this.lblComboMesta.Location = new System.Drawing.Point(12, 272);
+            this.lblComboMesta.Location = new System.Drawing.Point(12, 261);
             this.lblComboMesta.Name = "lblComboMesta";
             this.lblComboMesta.Size = new System.Drawing.Size(64, 21);
             this.lblComboMesta.TabIndex = 14;
@@ -127,14 +127,14 @@
             // cbMesta
             // 
             this.cbMesta.FormattingEnabled = true;
-            this.cbMesta.Location = new System.Drawing.Point(74, 269);
+            this.cbMesta.Location = new System.Drawing.Point(74, 258);
             this.cbMesta.Name = "cbMesta";
             this.cbMesta.Size = new System.Drawing.Size(176, 25);
             this.cbMesta.TabIndex = 13;
             // 
             // btnDodajAranzman
             // 
-            this.btnDodajAranzman.Location = new System.Drawing.Point(116, 310);
+            this.btnDodajAranzman.Location = new System.Drawing.Point(116, 288);
             this.btnDodajAranzman.Name = "btnDodajAranzman";
             this.btnDodajAranzman.Size = new System.Drawing.Size(134, 35);
             this.btnDodajAranzman.TabIndex = 15;
@@ -161,7 +161,7 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(116, 351);
+            this.btnObrisi.Location = new System.Drawing.Point(295, 288);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(134, 35);
             this.btnObrisi.TabIndex = 18;
@@ -170,7 +170,7 @@
             // 
             // btnDetalji
             // 
-            this.btnDetalji.Location = new System.Drawing.Point(116, 392);
+            this.btnDetalji.Location = new System.Drawing.Point(444, 288);
             this.btnDetalji.Name = "btnDetalji";
             this.btnDetalji.Size = new System.Drawing.Size(134, 35);
             this.btnDetalji.TabIndex = 19;
@@ -179,7 +179,7 @@
             // 
             // btnIzmeni
             // 
-            this.btnIzmeni.Location = new System.Drawing.Point(116, 433);
+            this.btnIzmeni.Location = new System.Drawing.Point(593, 288);
             this.btnIzmeni.Name = "btnIzmeni";
             this.btnIzmeni.Size = new System.Drawing.Size(134, 35);
             this.btnIzmeni.TabIndex = 20;
