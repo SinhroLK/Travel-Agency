@@ -20,7 +20,7 @@ namespace Common.Domain
         public string TableName => "Termin";
         public string Values => $"'{Aranzman.AranzmanId}', '{Vodic.VodicId}', '{DatumOd.ToString("yyyyMMdd")}', '{DatumDo.ToString("yyyyMMdd")}'";
 
-        public int id => RedniBroj;
+        public int id { get => RedniBroj; set => RedniBroj = value; }
 
         public string idColumnName => "termin_id";
 

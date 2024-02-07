@@ -19,7 +19,7 @@ namespace Common.Domain
         public string TableName => "Vodic";
         public string Values => $"'{Ime}', '{DatumRodjenja.ToString("yyyyMMdd")}', '{Plata}', '{BrojTelefona}', '{DatumIstekaUgovora.ToString("yyyyMMdd")}'";
 
-        public int id => VodicId;
+        public int id { get => VodicId; set => VodicId = value; } 
 
         public string idColumnName => "vodic_id";
 

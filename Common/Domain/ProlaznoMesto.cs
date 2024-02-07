@@ -12,19 +12,22 @@ namespace Common.Domain
     {
         public Aranzman Aranzman { get; set; }
         public Mesto Mesto { get; set; }
-        public int Satnica { get; set; }
-        public bool Prenociste { get; set; }
 
         public string TableName => "ProlaznoMesto";
-        public string Values => $"'{Aranzman.AranzmanId}', '{Mesto.MestoId}', {Satnica}, '{(Prenociste ? 1 : 0)}'";
+        public string Values => $"'{Aranzman.AranzmanId}', '{Mesto.MestoId}'";
 
-        public int id => throw new NotImplementedException();
+        public int id { get => Aranzman.AranzmanId; set => Aranzman.AranzmanId = value; } 
 
-        public string idColumnName => throw new NotImplementedException();
+        public string idColumnName => "aranzman_id";
 
-        public string zaJoin => throw new NotImplementedException();
+        public string zaJoin => "join Aranzman on(Aranzman.aranzman_id = ProlaznoMesto.aranzman_id) join Mesto on(Mesto.mesto_id = ProlaznoMesto.mesto_id";
 
-        public string zaSet => throw new NotImplementedException();
+        public string zaSet => $"mesto_id = {Mesto.MestoId}";
+
+        public override string ToString()
+        {
+            return $"{Aranzman} {Mesto}";
+        }
 
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {
@@ -33,13 +36,14 @@ namespace Common.Domain
             {
                 ProlaznoMesto pm = new ProlaznoMesto();
                 Aranzman ar = new Aranzman();
-                Mesto me = new Mesto();
                 ar.AranzmanId = (int)reader["aranzman_id"];
-                pm.Aranzman = ar;
+                ar.ImeAranzmana = (string)reader["ime_aranzmana"];
+                ar.Cena = (int)reader["cena"];
+                ar.Opis = (string)reader["opis"];
+                Mesto me = new Mesto();
                 me.MestoId = (int)reader["mesto_id"];
-                pm.Mesto = me;
-                pm.Satnica = (int)reader["satnica"];
-                pm.Prenociste = (bool)reader["prenociste"];
+                me.NazivMesta = (string)reader["naziv"];
+                ar.Mesto = me;
                 lista.Add(pm);
             }
             return lista;

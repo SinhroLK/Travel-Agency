@@ -15,12 +15,11 @@ namespace Common.Domain
         public int Cena { get; set; }
         public string Opis { get; set; }
         public Mesto Mesto { get; set; }
+        public List<ProlaznoMesto> prolaznaMesta { get; set; }
 
         public string TableName => "Aranzman";
 
         public string Values => $"'{ImeAranzmana}', {Cena}, '{Opis}', {Mesto.MestoId}";
-
-        public int id => AranzmanId;
 
         public string idColumnName => "aranzman_id";
 
@@ -28,9 +27,11 @@ namespace Common.Domain
 
         public string zaSet => $"ime_aranzmana='{ImeAranzmana}', cena = {Cena}, opis = '{Opis}', mesto_id={Mesto.MestoId}";
 
+        public int id { get => AranzmanId; set => AranzmanId = value; }
+
         public override string ToString()
         {
-            return ImeAranzmana;
+            return $"{id}";
         }
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {

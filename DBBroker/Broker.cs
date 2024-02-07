@@ -75,19 +75,17 @@ namespace DBBroker
             return list;
         }
 
-        public object Kreiraj(IEntity entity)
+        public IEntity Kreiraj(IEntity entity)
         {
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = $"insert into {entity.TableName} values({entity.Values})";
-            if(command.ExecuteNonQuery() > 0)
-            {
-                return entity;
-            }
+            command.CommandText = $"insert into {entity.TableName} output inserted.{entity.idColumnName} values({entity.Values})";
+            int id = (int)command.ExecuteScalar();
+            entity.id = id;
             command.Dispose();
-            return null;
+            return entity;
         }
 
-        public object Obrisi(IEntity entity)
+        public IEntity Obrisi(IEntity entity)
         {
             SqlCommand command = connection.CreateCommand();
             command.CommandText = $"delete from {entity.TableName} where {entity.idColumnName} = {entity.id}";
@@ -101,7 +99,7 @@ namespace DBBroker
 
         }
 
-        public object Izmeni(IEntity objekat)
+        public IEntity Izmeni(IEntity objekat)
         {
             SqlCommand command = connection.CreateCommand();
             command.CommandText = $"update {objekat.TableName} set {objekat.zaSet} where {objekat.idColumnName} = {objekat.id}";

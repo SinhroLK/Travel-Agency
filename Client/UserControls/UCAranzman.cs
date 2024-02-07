@@ -34,9 +34,13 @@ namespace Client.UserControls
                 return;
             }
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
+            
             cbMesta.DataSource = mesta;
             cbMesta.DisplayMember = "NazivMesta";
             cbMesta.SelectedItem = null;
+            BindingList<Mesto> checkedMesto = new BindingList<Mesto>(listaMesta);
+            clbMesta.DataSource = checkedMesto;
+            clbMesta.DisplayMember = "NazivMesta";
         }
         public void InitializeTimer()
         {

@@ -43,6 +43,7 @@
             this.btnObrisi = new System.Windows.Forms.Button();
             this.btnDetalji = new System.Windows.Forms.Button();
             this.btnIzmeni = new System.Windows.Forms.Button();
+            this.clbMesta = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAranzmani)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,11 +187,20 @@
             this.btnIzmeni.Text = "Izmeni Aranzman";
             this.btnIzmeni.UseVisualStyleBackColor = true;
             // 
+            // clbMesta
+            // 
+            this.clbMesta.FormattingEnabled = true;
+            this.clbMesta.Location = new System.Drawing.Point(295, 340);
+            this.clbMesta.Name = "clbMesta";
+            this.clbMesta.Size = new System.Drawing.Size(432, 148);
+            this.clbMesta.TabIndex = 21;
+            // 
             // UCAranzman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.Controls.Add(this.clbMesta);
             this.Controls.Add(this.btnIzmeni);
             this.Controls.Add(this.btnDetalji);
             this.Controls.Add(this.btnObrisi);
@@ -232,5 +242,6 @@
         public System.Windows.Forms.Button btnObrisi;
         public System.Windows.Forms.Button btnDetalji;
         public System.Windows.Forms.Button btnIzmeni;
+        public System.Windows.Forms.CheckedListBox clbMesta;
     }
 }

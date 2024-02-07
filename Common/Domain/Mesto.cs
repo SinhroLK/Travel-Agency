@@ -18,7 +18,7 @@ namespace Common.Domain
         public string TableName => "Mesto";
         public string Values => $"'{NazivMesta}', '{Valuta}', {BrojStanovnika}";
 
-        public int id => MestoId;
+        public int id { get => MestoId; set => MestoId = value; }
 
         public string idColumnName => "mesto_id";
 

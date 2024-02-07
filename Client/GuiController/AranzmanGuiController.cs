@@ -137,6 +137,7 @@ namespace Client.GuiController
             {
                 try
                 {
+                    
                     Aranzman aranzman = new Aranzman
                     {
                         ImeAranzmana = ucAranzman.txtIme.Text,
@@ -144,7 +145,22 @@ namespace Client.GuiController
                         Opis = ucAranzman.txtOpis.Text,
                         Mesto = mesto
                     };
+                    List<ProlaznoMesto> prolazna = new List<ProlaznoMesto>();
+                    foreach (var checkedItem in ucAranzman.clbMesta.CheckedItems)
+                    {
+                        // Convert the checkedItem to string and do something with it
+                        ProlaznoMesto itemValue = new ProlaznoMesto();
+                        itemValue.Aranzman = aranzman;
+                        itemValue.Mesto = checkedItem as Mesto;
+                        prolazna.Add(itemValue);
+                    }
+                    aranzman.prolaznaMesta = prolazna;
                     Response response = Communication.Instance.KreirajAranzman(aranzman);
+                    
+                    for (int i = 0; i < ucAranzman.clbMesta.Items.Count; i++)
+                    {
+                        ucAranzman.clbMesta.SetItemChecked(i, false);
+                    }
                     if (response == null)
                     {
                         MessageBox.Show("Doslo je do greske na serveru");

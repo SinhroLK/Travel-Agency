@@ -10,7 +10,7 @@ namespace Server.SystemOperation
     internal class ObrisiAranzmanSO:SystemOperationBase
     {
         private readonly Aranzman a;
-        public object Result
+        public IEntity Result
         {
             get; set;
         }

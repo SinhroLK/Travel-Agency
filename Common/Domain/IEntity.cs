@@ -11,7 +11,7 @@ namespace Common.Domain
     {
         string TableName { get; }
         string Values { get; }
-        int id { get; }
+        int id { get; set; }
         string idColumnName { get; }
         string zaJoin { get; }
         string zaSet { get; }
