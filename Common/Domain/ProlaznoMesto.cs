@@ -20,13 +20,18 @@ namespace Common.Domain
 
         public string idColumnName => "aranzman_id";
 
-        public string zaJoin => "join Aranzman on(Aranzman.aranzman_id = ProlaznoMesto.aranzman_id) join Mesto on(Mesto.mesto_id = ProlaznoMesto.mesto_id";
+        public string zaJoin => "join Aranzman on(Aranzman.aranzman_id = ProlaznoMesto.aranzman_id) join Mesto on(Mesto.mesto_id = ProlaznoMesto.mesto_id)";
 
         public string zaSet => $"mesto_id = {Mesto.MestoId}";
 
         public override string ToString()
         {
             return $"{Aranzman} {Mesto}";
+        }
+        public override bool Equals(object obj)
+        {
+            return obj is ProlaznoMesto prolaznoMesto &&
+                   Mesto.MestoId == prolaznoMesto.Mesto.MestoId && id == prolaznoMesto.id;
         }
 
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
@@ -44,6 +49,8 @@ namespace Common.Domain
                 me.MestoId = (int)reader["mesto_id"];
                 me.NazivMesta = (string)reader["naziv"];
                 ar.Mesto = me;
+                pm.Aranzman = ar;
+                pm.Mesto = me;
                 lista.Add(pm);
             }
             return lista;

@@ -72,6 +72,7 @@
     <Compile Include="SystemOperation\SystemOperationBase.cs" />
     <Compile Include="SystemOperation\VratiAranzmaneSO.cs" />
     <Compile Include="SystemOperation\VratiMestaSO.cs" />
+    <Compile Include="SystemOperation\VratiProlaznaMestaSO.cs" />
     <Compile Include="SystemOperation\VratiTermineSO.cs" />
     <Compile Include="SystemOperation\VratiVodiceSO.cs" />
     <EmbeddedResource Include="FrmServer.resx">

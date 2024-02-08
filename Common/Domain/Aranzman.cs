@@ -31,7 +31,7 @@ namespace Common.Domain
 
         public override string ToString()
         {
-            return $"{id}";
+            return ImeAranzmana;
         }
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {

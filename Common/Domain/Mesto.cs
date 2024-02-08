@@ -30,6 +30,11 @@ namespace Common.Domain
         {
             return NazivMesta;
         }
+        public override bool Equals(object obj)
+        {
+            return obj is Mesto mesto &&
+                   id == mesto.id;
+        }
 
         public List<IEntity> VratiReaderListu(SqlDataReader reader)
         {

@@ -24,6 +24,7 @@ namespace Common.Communication
         KreirajTermin,
         ObrisiTermin,
         IzmeniTermin,
-        Logout
+        Logout,
+        VratiProlaznaMesta
     }
 }

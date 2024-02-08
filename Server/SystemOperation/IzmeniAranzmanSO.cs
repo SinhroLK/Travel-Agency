@@ -20,6 +20,15 @@ namespace Server.SystemOperation
         }
         protected override void ExecuteConcreteOperation()
         {
+            foreach (ProlaznoMesto p in a.prolaznaMesta)
+            {
+                broker.Obrisi(p);
+                break;
+            }
+            foreach (ProlaznoMesto p in a.prolaznaMesta)
+            {
+                broker.Kreiraj(p);
+            }
             Result = broker.Izmeni(a);
         }
     }

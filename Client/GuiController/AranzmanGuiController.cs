@@ -39,6 +39,19 @@ namespace Client.GuiController
                     aranzmanZaIzmenu.Cena = int.Parse(ucAranzman.txtCena.Text);
                     aranzmanZaIzmenu.Opis = ucAranzman.txtOpis.Text;
                     aranzmanZaIzmenu.Mesto = mesto;
+                    //MessageBox.Show($"{aranzmanZaIzmenu.id}");
+                    
+                    List<ProlaznoMesto> prolazna = new List<ProlaznoMesto>();
+                    foreach (var checkedItem in ucAranzman.clbMesta.CheckedItems)
+                    {
+                        // Convert the checkedItem to string and do something with it
+                        ProlaznoMesto itemValue = new ProlaznoMesto();
+                        itemValue.Aranzman = aranzmanZaIzmenu;
+                        itemValue.Mesto = checkedItem as Mesto;
+                        prolazna.Add(itemValue);
+                    }
+                    aranzmanZaIzmenu.prolaznaMesta.Clear();
+                    aranzmanZaIzmenu.prolaznaMesta = prolazna;
                     Response response = Communication.Instance.IzmeniAranzman(aranzmanZaIzmenu);
                     if (response == null)
                     {
@@ -55,6 +68,10 @@ namespace Client.GuiController
                         ucAranzman.txtCena.Text = "";
                         ucAranzman.txtPretraga.Text = "";
                         ucAranzman.cbMesta.SelectedItem = null;
+                        for (int i = 0; i < ucAranzman.clbMesta.Items.Count; i++)
+                        {
+                            ucAranzman.clbMesta.SetItemChecked(i, false);
+                        }
                     }
                     else
                     {
@@ -81,10 +98,40 @@ namespace Client.GuiController
             {
                 int rowIndex = ucAranzman.dgvAranzmani.SelectedCells[0].RowIndex;
                 aranzmanZaIzmenu = ucAranzman.dgvAranzmani.Rows[rowIndex].DataBoundItem as Aranzman;
+                //MessageBox.Show($"{aranzmanZaIzmenu.id}");
                 ucAranzman.txtIme.Text = aranzmanZaIzmenu.ImeAranzmana;
                 ucAranzman.txtCena.Text = aranzmanZaIzmenu.Cena.ToString();
                 ucAranzman.txtOpis.Text = aranzmanZaIzmenu.Opis;
                 ucAranzman.cbMesta.SelectedIndex = ucAranzman.cbMesta.FindStringExact(aranzmanZaIzmenu.Mesto.ToString());
+                List<ProlaznoMesto> prolaznaMesta = (List<ProlaznoMesto>)Communication.Instance.VratiProlaznaMesta(new ProlaznoMesto());
+                List<Mesto> mestaZaIzmenu = new List<Mesto>();
+                foreach (ProlaznoMesto p in prolaznaMesta)
+                {
+                    if (p.Aranzman.AranzmanId == aranzmanZaIzmenu.AranzmanId)
+                    {
+                        mestaZaIzmenu.Add(p.Mesto);
+                    }
+                }
+                for (int i = 0; i < ucAranzman.clbMesta.Items.Count; i++)
+                {
+                    Mesto m = ucAranzman.clbMesta.Items[i] as Mesto;
+                    //MessageBox.Show($"{mestaZaIzmenu[i]}");
+                    if (mestaZaIzmenu.Contains(m))
+                    {
+                        ucAranzman.clbMesta.SetItemChecked(i, true);
+                        
+                    }
+                }
+                List<ProlaznoMesto> prolazna = new List<ProlaznoMesto>();
+                foreach (var checkedItem in ucAranzman.clbMesta.CheckedItems)
+                {
+                    // Convert the checkedItem to string and do something with it
+                    ProlaznoMesto itemValue = new ProlaznoMesto();
+                    itemValue.Aranzman = aranzmanZaIzmenu;
+                    itemValue.Mesto = checkedItem as Mesto;
+                    prolazna.Add(itemValue);
+                }
+                aranzmanZaIzmenu.prolaznaMesta = prolazna;
                 ucAranzman.btnIzmeni.Enabled = true;
             }
             else
@@ -100,6 +147,30 @@ namespace Client.GuiController
                 int rowIndex = ucAranzman.dgvAranzmani.SelectedCells[0].RowIndex;
                 Aranzman aranzman = ucAranzman.dgvAranzmani.Rows[rowIndex].DataBoundItem as Aranzman;
                 //MessageBox.Show($"{vodic.Ime}, {vodic.VodicId}");
+                //MessageBox.Show($"{aranzman.id}");
+                List<ProlaznoMesto> prolaznaMesta = (List<ProlaznoMesto>)Communication.Instance.VratiProlaznaMesta(new ProlaznoMesto());
+                List<Mesto> mestaZaIzmenu = new List<Mesto>();
+                foreach (ProlaznoMesto p in prolaznaMesta)
+                {
+                    if (p.Aranzman.AranzmanId == aranzman.AranzmanId)
+                    {
+                        mestaZaIzmenu.Add(p.Mesto);
+                    }
+                }
+                List<ProlaznoMesto> prolazna = new List<ProlaznoMesto>();
+                for (int i = 0; i < ucAranzman.clbMesta.Items.Count; i++)
+                {
+                    Mesto m = ucAranzman.clbMesta.Items[i] as Mesto;
+                    //MessageBox.Show($"{mestaZaIzmenu[i]}");
+                    if (mestaZaIzmenu.Contains(m))
+                    {
+                        ProlaznoMesto itemValue = new ProlaznoMesto();
+                        itemValue.Aranzman = aranzman;
+                        itemValue.Mesto = m;
+                        prolazna.Add(itemValue);
+                    }
+                }
+                aranzman.prolaznaMesta = prolazna;
                 Response response = Communication.Instance.ObrisiAranzman(aranzman);
                 if (response == null)
                 {

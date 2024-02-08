@@ -153,6 +153,9 @@ namespace Server
                             throw new Exception();
                         }
                         break;
+                    case Operation.VratiProlaznaMesta:
+                        r.Odgovor = Controller.Instance.VratiProlaznaMesta((ProlaznoMesto)req.Argument);
+                        break;
                     case Operation.Logout:
                         Server.klijenti.Remove(this);
                         Close();

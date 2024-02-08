@@ -139,5 +139,12 @@ namespace Server
             izmeniTermin.ExecuteTemplate();
             return izmeniTermin.Result;
         }
+
+        internal object VratiProlaznaMesta(ProlaznoMesto argument)
+        {
+            VratiProlaznaMestaSO vratiMesta = new VratiProlaznaMestaSO(argument);
+            vratiMesta.ExecuteTemplate();
+            return (List<ProlaznoMesto>)vratiMesta.Result;
+        }
     }
 }

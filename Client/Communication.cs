@@ -258,6 +258,22 @@ namespace Client
             Response response = (Response)receiver.Receive();
             return response;
         }
+        internal object VratiProlaznaMesta(ProlaznoMesto prolaznoMesto)
+        {
+            Request request = new Request
+            {
+                Argument = prolaznoMesto,
+                Operation = Operation.VratiProlaznaMesta
+            };
+            sender.Send(request);
+            Response response = (Response)receiver.Receive();
+            if (response == null)
+            {
+                return response;
+            }
+            // Console.WriteLine(response.Odgovor);
+            return response.Odgovor;
+        }
         internal void Logout()
         {
             Request request = new Request
@@ -276,5 +292,6 @@ namespace Client
             socket = null;
         }
 
+        
     }
 }
