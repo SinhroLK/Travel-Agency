@@ -14,7 +14,7 @@ namespace Client.UserControls
 {
     public partial class UCVodic : UserControl
     {
-        Timer timer = new Timer();
+        public static Timer timer = new Timer();
         public BindingList<Vodic> vodici;
         public BindingList<Vodic> filterVodici;
         public UCVodic()
@@ -53,7 +53,8 @@ namespace Client.UserControls
                 dgvVodici.Columns["IdColumnName"].Visible = false;
                 dgvVodici.Columns["zaJoin"].Visible = false;
                 dgvVodici.Columns["zaSet"].Visible = false;
-
+                dgvVodici.Columns["DatumRodjenja"].HeaderText = "Datum rodjenja";
+                dgvVodici.Columns["DatumIstekaUgovora"].HeaderText = "Datum isteka ugovora";
             } 
         }
         //private void txtPretraga_TextChanged(object sender, EventArgs e)

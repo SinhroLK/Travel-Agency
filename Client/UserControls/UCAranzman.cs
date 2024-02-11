@@ -15,7 +15,7 @@ namespace Client.UserControls
 {
     public partial class UCAranzman : UserControl
     {
-        Timer timer = new Timer();
+        public static Timer timer = new Timer();
         public BindingList<Aranzman> aranzmani;
         public BindingList<Aranzman> filterAranzmani;
         public UCAranzman()
@@ -73,6 +73,7 @@ namespace Client.UserControls
                 dgvAranzmani.Columns["IdColumnName"].Visible = false;
                 dgvAranzmani.Columns["zaJoin"].Visible = false;
                 dgvAranzmani.Columns["zaSet"].Visible = false;
+                dgvAranzmani.Columns["ImeAranzmana"].HeaderText = "Ime aranzmana";
             }
         }
     }

@@ -44,6 +44,7 @@
             this.btnDetalji = new System.Windows.Forms.Button();
             this.btnIzmeni = new System.Windows.Forms.Button();
             this.clbMesta = new System.Windows.Forms.CheckedListBox();
+            this.lblProlaznaMesta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAranzmani)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,7 +136,7 @@
             // 
             // btnDodajAranzman
             // 
-            this.btnDodajAranzman.Location = new System.Drawing.Point(116, 288);
+            this.btnDodajAranzman.Location = new System.Drawing.Point(116, 293);
             this.btnDodajAranzman.Name = "btnDodajAranzman";
             this.btnDodajAranzman.Size = new System.Drawing.Size(134, 35);
             this.btnDodajAranzman.TabIndex = 15;
@@ -162,7 +163,7 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(295, 288);
+            this.btnObrisi.Location = new System.Drawing.Point(116, 347);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(134, 35);
             this.btnObrisi.TabIndex = 18;
@@ -171,7 +172,7 @@
             // 
             // btnDetalji
             // 
-            this.btnDetalji.Location = new System.Drawing.Point(444, 288);
+            this.btnDetalji.Location = new System.Drawing.Point(116, 398);
             this.btnDetalji.Name = "btnDetalji";
             this.btnDetalji.Size = new System.Drawing.Size(134, 35);
             this.btnDetalji.TabIndex = 19;
@@ -180,7 +181,7 @@
             // 
             // btnIzmeni
             // 
-            this.btnIzmeni.Location = new System.Drawing.Point(593, 288);
+            this.btnIzmeni.Location = new System.Drawing.Point(116, 448);
             this.btnIzmeni.Name = "btnIzmeni";
             this.btnIzmeni.Size = new System.Drawing.Size(134, 35);
             this.btnIzmeni.TabIndex = 20;
@@ -190,16 +191,28 @@
             // clbMesta
             // 
             this.clbMesta.FormattingEnabled = true;
-            this.clbMesta.Location = new System.Drawing.Point(295, 340);
+            this.clbMesta.Location = new System.Drawing.Point(295, 317);
             this.clbMesta.Name = "clbMesta";
-            this.clbMesta.Size = new System.Drawing.Size(432, 148);
+            this.clbMesta.Size = new System.Drawing.Size(432, 166);
             this.clbMesta.TabIndex = 21;
+            // 
+            // lblProlaznaMesta
+            // 
+            this.lblProlaznaMesta.AutoSize = true;
+            this.lblProlaznaMesta.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.lblProlaznaMesta.ForeColor = System.Drawing.Color.White;
+            this.lblProlaznaMesta.Location = new System.Drawing.Point(291, 293);
+            this.lblProlaznaMesta.Name = "lblProlaznaMesta";
+            this.lblProlaznaMesta.Size = new System.Drawing.Size(137, 21);
+            this.lblProlaznaMesta.TabIndex = 22;
+            this.lblProlaznaMesta.Text = "Prolazna mesta";
             // 
             // UCAranzman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.Controls.Add(this.lblProlaznaMesta);
             this.Controls.Add(this.clbMesta);
             this.Controls.Add(this.btnIzmeni);
             this.Controls.Add(this.btnDetalji);
@@ -243,5 +256,6 @@
         public System.Windows.Forms.Button btnDetalji;
         public System.Windows.Forms.Button btnIzmeni;
         public System.Windows.Forms.CheckedListBox clbMesta;
+        public System.Windows.Forms.Label lblProlaznaMesta;
     }
 }

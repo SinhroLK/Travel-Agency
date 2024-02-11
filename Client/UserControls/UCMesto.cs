@@ -14,7 +14,7 @@ namespace Client.UserControls
 {
     public partial class UCMesto : UserControl
     {
-        Timer timer = new Timer();
+        public static Timer timer = new Timer();
         public UCMesto()
         {
             InitializeComponent();
@@ -30,9 +30,9 @@ namespace Client.UserControls
                 return;
             }
             BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
-            cbMesta.SelectedItem = null;
             cbMesta.DataSource = mesta;
             cbMesta.DisplayMember = "NazivMesta";
+            cbMesta.SelectedItem = null;
         }
 
         public void InitializeTimer()
@@ -62,7 +62,9 @@ namespace Client.UserControls
             dgvMesta.Columns["Id"].Visible = false;
             dgvMesta.Columns["IdColumnName"].Visible = false;
             dgvMesta.Columns["zaJoin"].Visible = false;
-            dgvMesta.Columns["zaSet"].Visible = false;   
+            dgvMesta.Columns["zaSet"].Visible = false;
+            dgvMesta.Columns["NazivMesta"].HeaderText = "Naziv Mesta";
+            dgvMesta.Columns["BrojStanovnika"].HeaderText = "Broj Stanovnika";
         }
     }
 }

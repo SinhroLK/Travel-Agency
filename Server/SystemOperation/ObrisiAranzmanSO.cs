@@ -23,6 +23,7 @@ namespace Server.SystemOperation
             foreach (ProlaznoMesto p in a.prolaznaMesta)
             {
                 broker.Obrisi(p);
+                break;
             }
             Result = broker.Obrisi(a);
         }

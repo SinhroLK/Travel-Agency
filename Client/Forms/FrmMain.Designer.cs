@@ -295,7 +295,7 @@
         public System.Windows.Forms.Button btnLogout;
         public System.Windows.Forms.Panel pnlMarker;
         private System.Windows.Forms.Panel pnlWindowControl;
-        private System.Windows.Forms.Panel pnlMain;
+        public System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnMaximize;

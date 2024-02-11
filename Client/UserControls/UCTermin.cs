@@ -14,7 +14,7 @@ namespace Client.UserControls
 {
     public partial class UCTermin : UserControl
     {
-        Timer timer = new Timer();
+        public static Timer timer = new Timer();
         public BindingList<Termin> termini;
         public BindingList<Termin> filterTermini;
         public UCTermin()
@@ -84,6 +84,8 @@ namespace Client.UserControls
                 dgvTermini.Columns["IdColumnName"].Visible = false;
                 dgvTermini.Columns["zaJoin"].Visible = false;
                 dgvTermini.Columns["zaSet"].Visible = false;
+                dgvTermini.Columns["DatumOd"].HeaderText = "Datum polaska";
+                dgvTermini.Columns["DatumDo"].HeaderText = "Datum povratka";
 
             }
         }

@@ -63,6 +63,7 @@
     <Compile Include="GuiController\LoginGuiController.cs" />
     <Compile Include="GuiController\MainCoordinator.cs" />
     <Compile Include="GuiController\MestoGuiController.cs" />
+    <Compile Include="GuiController\PocetnaGuiController.cs" />
     <Compile Include="GuiController\TerminGuiController.cs" />
     <Compile Include="GuiController\VodicGuiController.cs" />
     <Compile Include="Program.cs" />
@@ -78,6 +79,12 @@
     </Compile>
     <Compile Include="UserControls\UCMesto.Designer.cs">
       <DependentUpon>UCMesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCPocetna.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCPocetna.Designer.cs">
+      <DependentUpon>UCPocetna.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCTermin.cs">
       <SubType>UserControl</SubType>
@@ -106,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCMesto.resx">
       <DependentUpon>UCMesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCPocetna.resx">
+      <DependentUpon>UCPocetna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCTermin.resx">
       <DependentUpon>UCTermin.cs</DependentUpon>

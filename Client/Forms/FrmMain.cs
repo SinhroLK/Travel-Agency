@@ -46,6 +46,7 @@ namespace Client
             btnAranzman.Click += MainCoordinator.Instance.DodajAranzman;
             btnTermin.Click += MainCoordinator.Instance.DodajTermin;
             btnLogout.Click += MainCoordinator.Instance.AdminLogout;
+            btnPocetna.Click += MainCoordinator.Instance.PocetnaStranica;
             this.FormClosed += MainCoordinator.Instance.FormClose;
         }
 

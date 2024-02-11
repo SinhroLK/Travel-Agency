@@ -1,4 +1,5 @@
-﻿using Common.Communication;
+﻿using Client.UserControls;
+using Common.Communication;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -34,12 +35,14 @@ namespace Client.GuiController
             vodicGuiController = new VodicGuiController();
             aranzmanGuiController = new AranzmanGuiController();
             terminGuiController = new TerminGuiController();
+            pocetnaGuiController = new PocetnaGuiController();
         }
         public FrmMain frmMain;
         private MestoGuiController mestoGuiController;
         private VodicGuiController vodicGuiController;
         private AranzmanGuiController aranzmanGuiController;
         private TerminGuiController terminGuiController;
+        private PocetnaGuiController pocetnaGuiController;
         internal void ShowFrmMain(string ime, string prezime)
         {
             frmMain = new FrmMain();
@@ -204,21 +207,32 @@ namespace Client.GuiController
         {
             frmMain.ChangePanel(terminGuiController.KreirajDodajTermin());
         }
-
+        internal void PocetnaStranica(object sender, EventArgs e)
+        {
+            frmMain.ChangePanel(pocetnaGuiController.KreirajPocetnu());
+        }
         internal void AdminLogout(object sender, EventArgs e)
         {
-            Communication.Instance.Logout();
-            MessageBox.Show("Dovidjorno");
+            //frmMain.pnlMain.Controls.Clear();
+            //Communication.Instance.Logout();
+            //MessageBox.Show("Dovidjorno");
             frmMain.Close();
             return;
         }
 
         internal void FormClose(object sender, FormClosedEventArgs e)
         {
+            UCAranzman.timer.Stop();
+            UCVodic.timer.Stop();
+            UCMesto.timer.Stop();
+            UCTermin.timer.Stop();
+            //frmMain.pnlMain.Controls.Clear();
             Communication.Instance.Logout();
-            //MessageBox.Show("Dovidjorno");
+            MessageBox.Show("Dovidjorno");
             Environment.Exit(0);
             return;
         }
+
+        
     }
 }

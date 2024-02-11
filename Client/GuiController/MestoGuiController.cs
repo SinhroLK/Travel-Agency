@@ -3,6 +3,7 @@ using Common.Communication;
 using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -13,26 +14,26 @@ namespace Client.GuiController
 {
     public class MestoGuiController
     {
-        private UCMesto dodajMesto;
+        private UCMesto ucMesto;
 
         internal Control KreirajDodajMesto()
         {
-            dodajMesto = new UCMesto();
-            dodajMesto.btnDodajMesto.Click += DodajMesto;
-            dodajMesto.btnDodajSadrzaj.Click += DodajSadrzaj;
-            return dodajMesto;
+            ucMesto = new UCMesto();
+            ucMesto.btnDodajMesto.Click += DodajMesto;
+            ucMesto.btnDodajSadrzaj.Click += DodajSadrzaj;
+            return ucMesto;
         }
 
         private void DodajSadrzaj(object sender, EventArgs e)
         {
-            Mesto mesto = dodajMesto.cbMesta.SelectedItem as Mesto;
-            if(dodajMesto.txtSadrzaj.Text != "" && mesto != null)
+            Mesto mesto = ucMesto.cbMesta.SelectedItem as Mesto;
+            if(ucMesto.txtSadrzaj.Text != "" && mesto != null)
             {
               
                 Sadrzaj sadrzaj = new Sadrzaj
                 {
                     Mesto = mesto,
-                    Opis = dodajMesto.txtSadrzaj.Text
+                    Opis = ucMesto.txtSadrzaj.Text
                 };
                 Response response = Communication.Instance.KreirajSadrzaj(sadrzaj);
                 if (response == null)
@@ -45,8 +46,8 @@ namespace Client.GuiController
                 if (response.Exception == null)
                 {
                     MessageBox.Show($"Uspesno ste dodali sadrzaj za {mesto.NazivMesta}");
-                    dodajMesto.txtSadrzaj.Text = "";
-                    dodajMesto.cbMesta.SelectedItem = null;
+                    ucMesto.txtSadrzaj.Text = "";
+                    ucMesto.cbMesta.SelectedItem = null;
                 }
                 else
                 {
@@ -61,15 +62,15 @@ namespace Client.GuiController
 
         private void DodajMesto(object sender, EventArgs e)
         {
-            if(dodajMesto.txtNazivMesta.Text != "" && dodajMesto.txtValuta.Text != "" && dodajMesto.txtBrojStanovnika.Text != "")
+            if(ucMesto.txtNazivMesta.Text != "" && ucMesto.txtValuta.Text != "" && ucMesto.txtBrojStanovnika.Text != "")
             {
                 try
                 {
                     Mesto mesto = new Mesto
                     {
-                        NazivMesta = dodajMesto.txtNazivMesta.Text,
-                        Valuta = dodajMesto.txtValuta.Text,
-                        BrojStanovnika = int.Parse(dodajMesto.txtBrojStanovnika.Text)
+                        NazivMesta = ucMesto.txtNazivMesta.Text,
+                        Valuta = ucMesto.txtValuta.Text,
+                        BrojStanovnika = int.Parse(ucMesto.txtBrojStanovnika.Text)
                     };
                     Response response = Communication.Instance.KreirajMesto(mesto);
                     if (response == null)
@@ -82,9 +83,14 @@ namespace Client.GuiController
                     if (response.Exception == null)
                     {
                         MessageBox.Show("Uspesno ste dodali mesto!");
-                        dodajMesto.txtNazivMesta.Text = "";
-                        dodajMesto.txtValuta.Text = "";
-                        dodajMesto.txtBrojStanovnika.Text = "";
+                        ucMesto.txtNazivMesta.Text = "";
+                        ucMesto.txtValuta.Text = "";
+                        ucMesto.txtBrojStanovnika.Text = "";
+                        List<Mesto> listaMesta = (List<Mesto>)Communication.Instance.VratiMesta(new Mesto());
+                        BindingList<Mesto> mesta = new BindingList<Mesto>(listaMesta);
+                        ucMesto.cbMesta.SelectedItem = null;
+                        ucMesto.cbMesta.DataSource = mesta;
+                        ucMesto.cbMesta.DisplayMember = "NazivMesta";
                     }
                     else
                     {
