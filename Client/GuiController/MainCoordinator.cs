@@ -53,8 +53,7 @@ namespace Client.GuiController
             {
                 frmMain.btnPocetna.PerformClick();
             };
-            frmMain.ShowDialog();
-            
+            frmMain.ShowDialog(); 
         }
         #region navMenu
         internal void Aranzman(object sender, EventArgs e)
