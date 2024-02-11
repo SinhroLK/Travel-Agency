@@ -46,15 +46,15 @@ namespace Client.GuiController
         internal void ShowFrmMain(string ime, string prezime)
         {
             frmMain = new FrmMain();
-
-            //frmMain.pnlMarker.Height = frmMain.btnPocetna.Height;
-            //frmMain.pnlMarker.Top = frmMain.btnPocetna.Top;
-            //frmMain.pnlMarker.Left = frmMain.btnPocetna.Left;
-            //frmMain.btnPocetna.BackColor = Color.FromArgb(46, 51, 73);
+            frmMain.ChangePanel(pocetnaGuiController.KreirajPocetnu());
             frmMain.pnlMarker.Visible = false;
             frmMain.lblUsername.Text = ime + " " + prezime;
+            frmMain.Load += (sender, e) =>
+            {
+                frmMain.btnPocetna.PerformClick();
+            };
             frmMain.ShowDialog();
-            //frmMain.btnMesto.PerformClick();  
+            
         }
         #region navMenu
         internal void Aranzman(object sender, EventArgs e)
@@ -64,6 +64,7 @@ namespace Client.GuiController
             frmMain.pnlMarker.Top = frmMain.btnAranzman.Top;
             frmMain.pnlMarker.Left = frmMain.btnAranzman.Left;
             frmMain.btnAranzman.BackColor = Color.FromArgb(46, 51, 73);
+            frmMain.btnPocetna.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         internal void Vodic(object sender, EventArgs e)
@@ -73,6 +74,7 @@ namespace Client.GuiController
             frmMain.pnlMarker.Top = frmMain.btnVodic.Top;
             frmMain.pnlMarker.Left = frmMain.btnVodic.Left;
             frmMain.btnVodic.BackColor = Color.FromArgb(46, 51, 73);
+            frmMain.btnPocetna.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         internal void Termin(object sender, EventArgs e)
@@ -82,6 +84,7 @@ namespace Client.GuiController
             frmMain.pnlMarker.Top = frmMain.btnTermin.Top;
             frmMain.pnlMarker.Left = frmMain.btnTermin.Left;
             frmMain.btnTermin.BackColor = Color.FromArgb(46, 51, 73);
+            frmMain.btnPocetna.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         internal void Pocetna(object sender, EventArgs e)
@@ -100,6 +103,7 @@ namespace Client.GuiController
             frmMain.pnlMarker.Top = frmMain.btnMesto.Top;
             frmMain.pnlMarker.Left = frmMain.btnMesto.Left;
             frmMain.btnMesto.BackColor = Color.FromArgb(46, 51, 73);
+            frmMain.btnPocetna.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         internal void Logout(object sender, EventArgs e)
@@ -109,6 +113,7 @@ namespace Client.GuiController
             frmMain.pnlMarker.Top = frmMain.btnLogout.Top;
             frmMain.pnlMarker.Left = frmMain.btnLogout.Left;
             frmMain.btnLogout.BackColor = Color.FromArgb(46, 51, 73);
+            frmMain.btnPocetna.BackColor = Color.FromArgb(24, 30, 54);
         }
         #endregion
         #region resetNavMenu

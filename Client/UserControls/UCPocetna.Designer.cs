@@ -36,7 +36,7 @@
             this.lblDobrodosli.AutoSize = true;
             this.lblDobrodosli.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDobrodosli.ForeColor = System.Drawing.Color.White;
-            this.lblDobrodosli.Location = new System.Drawing.Point(141, 61);
+            this.lblDobrodosli.Location = new System.Drawing.Point(140, 68);
             this.lblDobrodosli.Name = "lblDobrodosli";
             this.lblDobrodosli.Size = new System.Drawing.Size(455, 96);
             this.lblDobrodosli.TabIndex = 5;
